@@ -1,0 +1,16 @@
+/* Customize the color of the carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+  color: rgb(117, 115, 115); /* Change the arrow color */
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: grey; /* Background color for the arrows */
+}
+
+.carousel-item {
+  transition: transform 2s ease, opacity 2s ease !important;
+}
