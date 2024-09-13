@@ -55,7 +55,7 @@ const HomeSectionCarsousal = () => {
           className='z-50 shadow-xl bg-white hover:bg-gray-300'
           onClick={slidePrev}
          
-          sx={{ position: 'absolute', top: '8rem', left: '.12rem', borderRight: "2px rgba(0,0,0,0.5) solid" }}
+          style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%) ', left: '.12rem', borderRight: "2px rgba(0,0,0,0.5) solid" }}
           aria-label='prev'
         >
          <KeyboardArrowLeftIcon />
