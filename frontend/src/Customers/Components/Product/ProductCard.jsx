@@ -3,12 +3,12 @@ import "./ProductCard.css";
 
 function ProductCard({product}) {
   return (
-    <div className="productCard w-[15rem] cursor-pointer transition-all m-3">
-      <div className="h-[20rem]">
+    <div className="productCard md:w-[15rem] sm:w-[80%] cursor-pointer transition-all m-3" key={product.id}>
+      <div className="h-[20rem]" >
         <img
           className="w-full h-full object-cover object-center-top"
           src={product.path}
-          alt="product image"
+          alt={product.alt}
         />
       </div>
       <div className="textPart bg-white mt-3">

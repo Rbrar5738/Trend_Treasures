@@ -8,6 +8,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 3,
@@ -26,6 +28,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 4,
@@ -35,6 +38,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 5,
@@ -44,6 +48,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 6,
@@ -53,6 +58,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 7,
@@ -62,6 +68,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 8,
@@ -71,6 +78,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 9,
@@ -80,6 +88,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 10,
@@ -89,6 +98,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 11,
@@ -98,6 +108,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
     {
       id: 6,
@@ -107,6 +118,7 @@ const HomeCarouselImages = {
       discountedPrice: "$100",
       price: "$200",
       discountPersent: "50%",
+      alt: "image1",
     },
   ],
 };
