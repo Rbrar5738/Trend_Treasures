@@ -11,6 +11,8 @@ import Box from '@mui/material/Box';
 import ProductReviewCard from "./ProductReviewCard";
 import "./ProductDetail.css";
 import LinearProgress from '@mui/material/LinearProgress';
+import HomeCarouselImages from "../HomeCarousel/HomeCarouselImages";
+import ProductCard from "../Product/ProductCard";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -341,6 +343,17 @@ export default function ProductDetails() {
     </Grid>
 
   </div>
+</section>
+
+{/*Similar Products */}
+<section className="pt-10 px-5">
+  <h1 >Similar Products</h1>
+
+  <div className="">
+  {HomeCarouselImages.images.map((item)=><ProductCard product={item}/>)}
+
+  </div>
+
 </section>
 
       </div>
