@@ -347,9 +347,9 @@ export default function ProductDetails() {
 
 {/*Similar Products */}
 <section className="pt-10 px-5">
-  <h1 >Similar Products</h1>
+  <h1 className="py-5 text-4xl font-bold">Similar Products</h1>
 
-  <div className="">
+  <div className="flex flex-wrap space-y-5 justify-center">
   {HomeCarouselImages.images.map((item)=><ProductCard product={item}/>)}
 
   </div>
