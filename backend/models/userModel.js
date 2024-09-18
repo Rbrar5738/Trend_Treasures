@@ -30,6 +30,28 @@ const userSchema = new mongoose.Schema({
       ref: "addresses",
     },
   ],
+  paymentInformation: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "paymentInformation",
+    },
+  ],
+  ratings: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ratings",
+    },
+  ],
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "reviews",
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
-
-module.exports = mongoose.model("user", userSchema);
+const User = mongoose.model("users", userSchema);
+module.exports == User;
