@@ -11,7 +11,7 @@ function App() {
       <header className="relative z-[999] bg-white">
         <Navigation className="navigation" />
       </header>
-      <div>
+      <div> 
         {/* <HomePage className="home-page" /> */}
         {/* <Product /> */}
         <ProductDetails />
