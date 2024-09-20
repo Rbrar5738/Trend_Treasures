@@ -33,7 +33,7 @@ const findUserById = async (userId) => {
 };
 
 //Find user by email
-const findUserByEmail = async (email) => {
+const getUserByEmail = async (email) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
@@ -59,10 +59,20 @@ const getUserProfileByToken = async (token) => {
   }
 };
 
-//
+//Get all users
+const getAllUsers = async () => {
+  try {
+    const users = await User.find();
+    return users;
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
 module.exports = {
   createUser,
   findUserById,
-  findUserByEmail,
+  getUserByEmail,
   getUserProfileByToken,
+  getAllUsers,
 };
