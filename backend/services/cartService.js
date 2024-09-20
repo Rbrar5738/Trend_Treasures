@@ -7,6 +7,7 @@ const createcart = async (user) => {
     return cart;
   } catch (err) {
     console.log(err.message);
+    throw new Error(err.message);
   }
 };
 module.exports = {

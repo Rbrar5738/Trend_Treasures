@@ -7,7 +7,7 @@ const authRoute = require("../routes/authRoute");
 const userRoute = require("../routes/userRoute");
 
 app.use(cors());
-
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoConnect(process.env.MONGODB_URI, {
@@ -15,7 +15,7 @@ mongoConnect(process.env.MONGODB_URI, {
   useNewUnifiedTopology: true,
 })
   .then(() => {
-    console.log("Database is conneted successfully");
+    console.log("Database is connected successfully");
   })
   .catch((error) => {
     console.log(error);

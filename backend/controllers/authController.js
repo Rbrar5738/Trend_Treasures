@@ -8,10 +8,10 @@ const register = async (req, res) => {
   try {
     const user = await userService.createUser(req.body);
     const jwt = jwtProvider.generateToken(user._id);
-    await cartService.ccreateCart(user);
+    // await cartService.createcart(user);
     return res.status(200).send({ jwt, message: "registered successfully" });
-  } catch (err) {
-    return res.status(500).send({ message: err.message });
+  } catch (error) {
+    return res.status(500).send({ error: error.message });
   }
 };
 

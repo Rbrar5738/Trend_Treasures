@@ -1,7 +1,8 @@
-const brcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 const jwtProvider = require("../config/jwtProvider");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 //Create a new User
 const createUser = async (userData) => {
@@ -9,13 +10,14 @@ const createUser = async (userData) => {
     let { firstName, lastName, email, password } = userData;
     const isUserExist = await User.findOne({ email });
     if (isUserExist) {
-      throw new Error("User already exist with email:", email);
+      throw new Error(`User already exists with email: ${email}`);
     }
     password = await bcrypt.hash(password, 10);
     const user = await User.create({ firstName, lastName, email, password });
     return user;
-  } catch (err) {
-    console.log(err.message);
+  } catch (error) {
+    console.log(error.message);
+    throw new Error(error.message);
   }
 };
 
@@ -29,6 +31,7 @@ const findUserById = async (userId) => {
     return user;
   } catch (err) {
     console.log(err.message);
+    throw new Error(err.message);
   }
 };
 
@@ -42,6 +45,7 @@ const getUserByEmail = async (email) => {
     return user;
   } catch (err) {
     console.log(err.message);
+    throw new Error(err.message);
   }
 };
 
@@ -56,6 +60,7 @@ const getUserProfileByToken = async (token) => {
     return user;
   } catch (err) {
     console.log(err.message);
+    throw new Error(err.message);
   }
 };
 
@@ -66,6 +71,7 @@ const getAllUsers = async () => {
     return users;
   } catch (err) {
     console.log(err.message);
+    throw new Error(err.message);
   }
 };
 
