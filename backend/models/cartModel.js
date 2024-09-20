@@ -30,7 +30,6 @@ const cartSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
-  efault: Date.now(),
 });
 const Cart = mongoose.model("carts", cartSchema);
 module.exports = Cart;
