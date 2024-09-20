@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { create } = require("./addresModel");
+const { create } = require("./addressModel");
 const ratingSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
