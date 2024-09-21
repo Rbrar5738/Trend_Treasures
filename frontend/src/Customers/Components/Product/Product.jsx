@@ -2,7 +2,7 @@
 'use client'
 
 import { useState } from 'react'
-import HomeCarouselImages from "../HomeCarousel/HomeCarouselImages";
+import HomeCarouselImages from "../HomeCarouselImages";
 import {
   Dialog,
   DialogBackdrop,
