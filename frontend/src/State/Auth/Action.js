@@ -28,7 +28,7 @@ export const register = (userData) => async (dispatch) => {
     if (user.jwt) {
       localStorage.setItem("jwt", user.jwt);
     }
-    console.log("User", user);
+
     dispatch(registerSucess(user));
   } catch (error) {
     // console.log(error.response.data);
