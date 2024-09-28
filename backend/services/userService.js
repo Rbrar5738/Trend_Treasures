@@ -16,8 +16,8 @@ const createUser = async (userData) => {
     const user = await User.create({ firstName, lastName, email, password });
     return user;
   } catch (error) {
-    console.log(error.message);
     throw new Error(error.message);
+    // console.log(error.message);
   }
 };
 

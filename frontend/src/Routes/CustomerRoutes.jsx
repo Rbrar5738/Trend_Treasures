@@ -8,6 +8,7 @@ import Product from '../Customers/Components/Product/Product'
 import ProductDetails from '../Customers/Components/ProductDetails/ProductDetails'
 import { Checkout } from '../Customers/Components/Checkout/Checkout'
 import Navigation from '../Customers/Components/Navigation/Navigation'
+import LoginForm from '../Customers/Auth/LoginForm'
 
 
 
@@ -27,6 +28,9 @@ const CustomerRoutes = () => {
         <Route path='/:levelone/:leveltwo/:levelthree' element={<Product  />} />
         <Route path='/products/:productId' element={<ProductDetails  />} />
         <Route path='/checkout' element={<Checkout  />} />
+        <Route path='/login' element={<HomePage  />} />
+        <Route path='/register' element={<HomePage  />} />
+        
 
      
 

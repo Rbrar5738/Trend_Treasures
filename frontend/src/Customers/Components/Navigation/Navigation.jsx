@@ -1,6 +1,7 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useInsertionEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Image } from "./Image";
+
 
 import {
   Bars3Icon,
@@ -19,6 +20,9 @@ import { deepPurple } from "@mui/material/colors";
 // import { getCart } from "../../../Redux/Customers/Cart/Action";
 import TextField from "@mui/material/TextField";
 import NavigationData from "./NavigationData";
+import AuthModal from "../../Auth/AuthModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getuser } from "../../../State/Auth/Action";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -26,20 +30,65 @@ function classNames(...classes) {
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+ 
 
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
-
+  const {auth}=useSelector(store=>store);
   const location = useLocation();
+  const dispatch = useDispatch();
+  const {jwt}=localStorage.getItem('jwt')
+
 
   const handleCategoryClick = (category, section, item, close) => {
     navigate(`/${category.id}/${section.id}/${item.id}`);
     close();
   };
+
+ useEffect(() => {
+    if(jwt)
+    {
+      dispatch(getuser(jwt))
+    }
+  },[jwt,auth.jwt])
+
+  useEffect(() => {
+    if(auth.user){
+      handleClose();
+    }
+   
+    if(location.pathname==="/login" || location.pathname==="/register"){
+      navigate(-1);
+    }
+    
+  },[auth.user])
+
+  
+  useEffect(() => {
+    
+    if(jwt){
+      handleClose();
+    }
+    if(location.pathname==="/login" || location.pathname==="/register"){
+      navigate(-1);
+    }
+    
+  },[jwt])
+
+
+  
   const handleCartClick = () => {
     navigate("/cart");
+  };
+
+  const handleOpen = () => {
+    setOpenAuthModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenAuthModal(false);
+
   };
 
   return (
@@ -121,8 +170,8 @@ export default function Navigation() {
                                   className="object-cover object-center"
                                 />
                               </div>
-                              <a
-                                href={item.href}
+                              <p
+                                // href={item.href}
                                 className="mt-6 block font-medium text-gray-900"
                               >
                                 <span
@@ -130,7 +179,7 @@ export default function Navigation() {
                                   aria-hidden="true"
                                 />
                                 {item.name}
-                              </a>
+                              </p>
                               <p aria-hidden="true" className="mt-1">
                                 Shop now
                               </p>
@@ -169,39 +218,32 @@ export default function Navigation() {
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   {NavigationData.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a
-                        href={page.href}
+                      <p
+                        // href={page.href}
                         className="-m-2 block p-2 font-medium text-gray-900"
                       >
                         {page.name}
-                      </a>
+                      </p>
                     </div>
                   ))}
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                    <a
-                      href="/"
-                      className="-m-2 block p-2 font-medium text-gray-900"
+                    <Button
+                      onClick={handleOpen}
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
                       Sign in
-                    </a>
+                    </Button>
                   </div>
                 </div>
 
                 <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="/" className="-m-2 flex items-center p-2">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">
-                      CAD
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
+                  
+                 
+                  
+                 
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -227,14 +269,14 @@ export default function Navigation() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+               
                   <span className="sr-only"> Trend Treasures</span>
                   <img
                     alt=""
                     src={Image.path}
                     className="lg:h-[5rem] w-[5rem] rounded-sm border border-gray-200 shadow-lg rounded-3xl hover:shadow-xl hover:h-[5.1rem] hover:w-[5.1rem] "
                   />
-                </a>
+                
               </div>
 
               {/* Flyout menus */}
@@ -370,13 +412,52 @@ export default function Navigation() {
 
               <div className="ml-auto flex items-center mt-2">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <p className="text-sm font-medium text-gray-700 hover:text-gray-800 cursor-pointer">
-                    Sign in
-                  </p>
+                {auth.user ? (
+                    <div>
+                      <Avatar
+                        className="text-white"
+                        // onClick={handleUserClick}  
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        // onClick={handleUserClick}
+                        sx={{
+                          bgcolor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      >
+                            {auth.user?.firstName[0].toUpperCase()}
+                            </Avatar>
+                            <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        // onClose={handleCloseUserMenu}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                     
+                        <MenuItem >Logout</MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                <Button
+                      onClick={handleOpen}
+                      className="text-sm font-medium text-gray-800 hover:text-gray-800"
+                    >
+                      Sign in
+                    </Button>
+                  )}
                   <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                  <p className="text-sm font-medium text-gray-700 hover:text-gray-800 cursor-pointer">
+                  <Button
+                     onClick={handleOpen}
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                    >
+                      
                     Create account
-                  </p>
+                  </Button>
                 </div>
                 {/* Search */}
                 <div className="flex lg:ml-6">
@@ -408,7 +489,8 @@ export default function Navigation() {
           </div>
         </nav>
       </header>
-      {/* <AuthModal handleClose={handleClose} open={openAuthModal} /> */}
+
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 }
