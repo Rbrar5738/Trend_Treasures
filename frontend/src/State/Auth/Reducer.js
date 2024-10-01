@@ -17,6 +17,7 @@ const initialState = {
   isAuthenticated: false,
   isLloading: false,
   error: null,
+  successmessage: false,
 };
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -28,6 +29,15 @@ export const authReducer = (state = initialState, action) => {
         isLloading: true,
         error: null,
       };
+      case REGISTER_SUCCESS:
+       
+          return {
+            ...state,
+            
+            isLloading: false,
+            error: null,
+            successmessage: true,
+          };
 
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
@@ -36,6 +46,7 @@ export const authReducer = (state = initialState, action) => {
         jwt: action.payload,
         isLloading: false,
         error: null,
+        successmessage: true,
       };
     case GET_USER_SUCCESS:
       return {
@@ -51,6 +62,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         isLloading: false,
+        successmessage: false,
       };
     case LOGOUT:
       return {

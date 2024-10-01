@@ -40,7 +40,7 @@ const getUserByEmail = async (email) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      throw new Error("User not found with email:", email);
+      throw new Error("User not found!");
     }
     return user;
   } catch (err) {
@@ -53,7 +53,8 @@ const getUserByEmail = async (email) => {
 const getUserProfileByToken = async (token) => {
   try {
     const userId = jwtProvider.getUserIdByToken(token);
-    const user = await User.findOne(userId);
+
+    const user = await User.findOne({ _id: userId });
     if (!user) {
       throw new Error("User not found with Id:", userId);
     }

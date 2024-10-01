@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const SECRET = "Ravinder Singh";
 
 //Generating token
 const generateToken = (userId) => {
-  const SECRET = "Ravinder Singh";
   const token = jwt.sign({ userId }, SECRET, {
     expiresIn: "48h",
   });
@@ -12,7 +12,7 @@ const generateToken = (userId) => {
 
 //Get id by tiken
 const getUserIdByToken = (token) => {
-  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  const decodedToken = jwt.verify(token, SECRET);
   return decodedToken.userId;
 };
 module.exports = { generateToken, getUserIdByToken };

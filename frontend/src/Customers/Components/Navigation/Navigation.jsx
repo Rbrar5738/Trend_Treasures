@@ -12,17 +12,14 @@ import {
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
-// import { navigation } from "../../../config/navigationMenu";
-// import AuthModal from "../Auth/AuthModal";
-// import { useDispatch, useSelector } from "react-redux";
+
 import { deepPurple } from "@mui/material/colors";
-// import { getUser, logout } from "../../../Redux/Auth/Action";
-// import { getCart } from "../../../Redux/Customers/Cart/Action";
+
 import TextField from "@mui/material/TextField";
 import NavigationData from "./NavigationData";
 import AuthModal from "../../Auth/AuthModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getuser } from "../../../State/Auth/Action";
+import { getuser, logout } from "../../../State/Auth/Action";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -76,7 +73,9 @@ export default function Navigation() {
     
   },[jwt])
 
-
+const handleGotoHome=()=>{
+  navigate("/");
+}
   
   const handleCartClick = () => {
     navigate("/cart");
@@ -89,6 +88,16 @@ export default function Navigation() {
   const handleClose = () => {
     setOpenAuthModal(false);
 
+  };
+  const handleCloseUserMenu = (event) => {
+    setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    handleCloseUserMenu();
+    dispatch(logout());
+  };
+  const handleUserClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
   return (
@@ -203,7 +212,7 @@ export default function Navigation() {
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
                                   <p className="-m-2 block p-2 text-gray-500">
-                                    {"item.name"}
+                                    {item.name}
                                   </p>
                                 </li>
                               ))}
@@ -230,12 +239,50 @@ export default function Navigation() {
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                    <Button
+                  {auth.user ? (
+                    <div>
+                      <Avatar
+                        className="text-white"
+                        onClick={handleUserClick}  
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        // onClick={handleUserClick}
+                        sx={{
+                          bgcolor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      >
+                            {auth.user?.firstName[0].toUpperCase()}
+                            </Avatar>
+                            <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        {/* <MenuItem onClick={handleMyOrderClick}> */}
+                        <MenuItem>
+                          {auth.user?.role === "ROLE_ADMIN"
+                            ? "Admin Dashboard"
+                            : "My Orders"}
+                        </MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                <Button
                       onClick={handleOpen}
-                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                      className="text-sm font-medium text-gray-800 hover:text-gray-800"
                     >
-                      Sign in
+                      Sign in | Register
                     </Button>
+                  )}
+                  
                   </div>
                 </div>
 
@@ -253,7 +300,7 @@ export default function Navigation() {
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Trend Treasures, Where Fashion Meets Convenience!
+          Trend Treasures, Shop the Trends, Treasure the Finds!
         </p>
         <nav aria-label="Top" className="mx-auto">
           <div className="border-b border-gray-200">
@@ -271,10 +318,11 @@ export default function Navigation() {
               <div className="ml-4 flex lg:ml-0">
                
                   <span className="sr-only"> Trend Treasures</span>
-                  <img
-                    alt=""
+                  <img onClick={handleGotoHome}
+                    alt="Logo of Trend Tresaures"
                     src={Image.path}
-                    className="lg:h-[5rem] w-[5rem] rounded-sm border border-gray-200 shadow-lg rounded-3xl hover:shadow-xl hover:h-[5.1rem] hover:w-[5.1rem] "
+                    className="lg:h-[5rem] w-[5rem] cursor-pointer opacity-80 rounded-sm  rounded-3xl  hover:opacity-100
+                    hover:translate-y-[-0.3rem]"                
                   />
                 
               </div>
@@ -416,7 +464,7 @@ export default function Navigation() {
                     <div>
                       <Avatar
                         className="text-white"
-                        // onClick={handleUserClick}  
+                        onClick={handleUserClick}  
                         aria-controls={open ? "basic-menu" : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? "true" : undefined}
@@ -433,13 +481,18 @@ export default function Navigation() {
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={openUserMenu}
-                        // onClose={handleCloseUserMenu}
+                        onClose={handleCloseUserMenu}
                         MenuListProps={{
                           "aria-labelledby": "basic-button",
                         }}
                       >
-                     
-                        <MenuItem >Logout</MenuItem>
+                        {/* <MenuItem onClick={handleMyOrderClick}> */}
+                        <MenuItem>
+                          {auth.user?.role === "ROLE_ADMIN"
+                            ? "Admin Dashboard"
+                            : "My Orders"}
+                        </MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
@@ -447,21 +500,21 @@ export default function Navigation() {
                       onClick={handleOpen}
                       className="text-sm font-medium text-gray-800 hover:text-gray-800"
                     >
-                      Sign in
+                      Sign in | Register
                     </Button>
                   )}
                   <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
-                  <Button
+                  {/* <Button
                      onClick={handleOpen}
                       className="text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
                       
-                    Create account
-                  </Button>
+                  
+                  </Button> */}
                 </div>
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <p className="p-2 text-gray-400 hover:text-gray-500 cursor-pointer">
+                  <p className="p-2 mt-3 text-gray-400 hover:text-gray-500 cursor-pointer">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
                       aria-hidden="true"
@@ -472,7 +525,7 @@ export default function Navigation() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <p className="group  flex items-center p-2 cursor-pointer">
+                  <p className="group mt-3 flex items-center p-2 cursor-pointer">
                     <ShoppingBagIcon
                       aria-hidden="true"
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
