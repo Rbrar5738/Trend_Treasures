@@ -15,6 +15,8 @@ import HomeCarouselImages from "../HomeCarousel/HomeCarouselImages";
 import ProductCard from "../Product/ProductCard";
 import { useNavigate } from "react-router-dom";
 import img from "./5.avif";
+import img1 from "./2.avif";
+
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -30,7 +32,7 @@ const product = {
       alt: "Two each of gray, white, and black shirts laying flat.",
     },
     {
-      src:img,
+      src:img1,
       alt: "Model wearing plain black basic tee.",
     },
     {
