@@ -14,6 +14,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import HomeCarouselImages from "../HomeCarousel/HomeCarouselImages";
 import ProductCard from "../Product/ProductCard";
 import { useNavigate } from "react-router-dom";
+import img from "./5.avif";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -25,19 +26,19 @@ const product = {
   ],
   images: [
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
+      src:img,
       alt: "Two each of gray, white, and black shirts laying flat.",
     },
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg",
+      src:img,
       alt: "Model wearing plain black basic tee.",
     },
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg",
+      src:img,
       alt: "Model wearing plain gray basic tee.",
     },
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg",
+      src:img,
       alt: "Model wearing plain white basic tee.",
     },
   ],

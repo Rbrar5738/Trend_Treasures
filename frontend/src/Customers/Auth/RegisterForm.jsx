@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Grid, TextField, Button, InputAdornment, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,6 +13,7 @@ const RegisterForm = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [formErrors, setFormErrors] = useState({});
+  const formRef = useRef(null); 
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -94,6 +95,7 @@ const RegisterForm = () => {
       });
     }
   }, [auth.error]);
+  // console.log(auth.successmessage);
 
   useEffect(() => {
     if (auth.successmessage) {
@@ -107,7 +109,7 @@ const RegisterForm = () => {
         progress: undefined,
         theme: "colored",
       });
-      document.querySelector('form').reset();
+      formRef.current.reset();
     }
   }, [auth.successmessage]);
 
@@ -125,7 +127,7 @@ const RegisterForm = () => {
           </span>
         </div>
       )}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={formRef}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
