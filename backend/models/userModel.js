@@ -1,33 +1,57 @@
 const mongoose = require("mongoose");
-
-const addressSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
-    required: true,
-  },
-  street: {
+const userSchema = new mongoose.Schema({
+  firstName: {
     type: String,
     required: true,
   },
-  city: {
+  lastName: {
     type: String,
     required: true,
   },
-  state: {
+  email: {
     type: String,
     required: true,
   },
-  postalCode: {
+  password: {
     type: String,
     required: true,
   },
-  country: {
+  role: {
     type: String,
+    default: "customer",
     required: true,
+  },
+  mobileNumber: {
+    type: Number,
+  },
+  address: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "addresses",
+    },
+  ],
+  paymentInformation: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "paymentInformation",
+    },
+  ],
+  ratings: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ratings",
+    },
+  ],
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "reviews",
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
   },
 });
-
-const Address = mongoose.model("addresses", addressSchema);
-
-module.exports = Address;
+const User = mongoose.model("users", userSchema);
+module.exports = User;
