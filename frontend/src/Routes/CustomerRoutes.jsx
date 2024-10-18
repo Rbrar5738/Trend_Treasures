@@ -6,7 +6,7 @@ import Cart from '../Customers/Components/Cart/Cart'
 import Footer from '../Customers/Components/Footer/Footer'
 import Product from '../Customers/Components/Product/Product'
 import ProductDetails from '../Customers/Components/ProductDetails/ProductDetails'
-import { Checkout } from '../Customers/Components/Checkout/Checkout'
+import Checkout from '../Customers/Components/Checkout/Checkout'
 import Navigation from '../Customers/Components/Navigation/Navigation'
 import LoginForm from '../Customers/Auth/LoginForm'
 
