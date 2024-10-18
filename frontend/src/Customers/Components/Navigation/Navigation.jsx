@@ -39,7 +39,7 @@ export default function Navigation() {
   const {auth}=useSelector(store=>store);
   const location = useLocation();
   const dispatch = useDispatch();
-  const {jwt}=localStorage.getItem('jwt')
+  const jwt=localStorage.getItem('jwt')
 
 
   const handleCategoryClick = (category, section, item, close) => {
@@ -47,12 +47,13 @@ export default function Navigation() {
     close();
   };
 
- useEffect(() => {
-    if(jwt)
-    {
-      dispatch(getuser(jwt))
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getuser(jwt));
+    } else {
+      dispatch(logout());
     }
-  },[jwt,auth.jwt])
+  }, [dispatch, jwt]);
 
   useEffect(() => {
     if(auth.user){

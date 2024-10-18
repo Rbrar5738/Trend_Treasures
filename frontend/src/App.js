@@ -5,6 +5,7 @@ import CustomerRoutes from "./Routes/CustomerRoutes";
 import { useDispatch } from "react-redux";
 import { getuser } from "./State/Auth/Action";
 import { useEffect } from "react";
+import { Checkout } from "./Customers/Components/Checkout/Checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,9 +18,10 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <Routes>
+    <Checkout/>
+      {/* <Routes>
         <Route path="/*" element={<CustomerRoutes />} />
-      </Routes>
+      </Routes> */}
     </>
   );
 }
