@@ -6,8 +6,10 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useLocation, useNavigate } from 'react-router-dom';
+import DeliveryAddressForm from './DeliveryAddressForm';
+import OrderSummary from './OrderSummary';
 
-const steps = ['Login', 'Delivery Address', 'Order Summary', 'Payment'];
+const steps = [/*'Login', */ 'Delivery Address', 'Order Summary', 'Payment'];
 
 export default function Checkout() {
   const location = useLocation();
@@ -60,7 +62,7 @@ export default function Checkout() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+       
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
                 color="inherit"
@@ -75,6 +77,11 @@ export default function Checkout() {
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </Box>
+            <div className='mt-10 ml-3'>
+              {
+                initialStep==1?<DeliveryAddressForm/>:<OrderSummary/>
+              }
+            </div>
           </React.Fragment>
         )}
       </Box>

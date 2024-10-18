@@ -2,8 +2,6 @@ import { Fragment, useEffect, useInsertionEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Image } from "./Image";
 
-
-
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -28,19 +26,15 @@ function classNames(...classes) {
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
- 
 
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
 
-
-  
-  const {auth}=useSelector(store=>store);
+  const { auth } = useSelector((store) => store);
   const location = useLocation();
   const dispatch = useDispatch();
-  const jwt=localStorage.getItem('jwt')
-
+  const jwt = localStorage.getItem("jwt");
 
   const handleCategoryClick = (category, section, item, close) => {
     navigate(`/${category.id}/${section.id}/${item.id}`);
@@ -56,32 +50,34 @@ export default function Navigation() {
   }, [dispatch, jwt]);
 
   useEffect(() => {
-    if(auth.user){
+    if (auth.user) {
       handleClose();
     }
-   
-    if(location.pathname==="/login" || location.pathname==="/register"){
+
+    if (location.pathname === "/login" || location.pathname === "/register") {
       navigate(-1);
     }
-    
-  },[auth.user])
+  }, [auth.user]);
 
-  
   useEffect(() => {
-    
-    if(jwt){
+    if (jwt) {
       handleClose();
     }
-    if(location.pathname==="/login" || location.pathname==="/register"){
+    if (location.pathname === "/login" || location.pathname === "/register") {
       navigate(-1);
     }
-    
-  },[jwt])
+  }, [jwt]);
 
-const handleGotoHome=()=>{
-  navigate("/");
-}
-  
+  const handleMyOrderClick = () => {
+    // Only navigate to orders page if the user is not an admin
+
+    navigate("/account/order"); // Replace '/orders' with the actual route to your orders page
+  };
+
+  const handleGotoHome = () => {
+    navigate("/");
+  };
+
   const handleCartClick = () => {
     navigate("/cart");
   };
@@ -92,14 +88,15 @@ const handleGotoHome=()=>{
 
   const handleClose = () => {
     setOpenAuthModal(false);
-
   };
   const handleCloseUserMenu = (event) => {
     setAnchorEl(null);
   };
   const handleLogout = () => {
     handleCloseUserMenu();
+
     dispatch(logout());
+    navigate("/");
   };
   const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -244,59 +241,57 @@ const handleGotoHome=()=>{
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                  {auth.user ? (
-                    <div>
-                      <Avatar
-                        className="text-white"
-                        onClick={handleUserClick}  
-                        aria-controls={open ? "basic-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        // onClick={handleUserClick}
-                        sx={{
-                          bgcolor: deepPurple[500],
-                          color: "white",
-                          cursor: "pointer",
-                        }}
+                    {auth.user ? (
+                      <div>
+                        <Avatar
+                          className="text-white"
+                          onClick={handleUserClick}
+                          aria-controls={open ? "basic-menu" : undefined}
+                          aria-haspopup="true"
+                          aria-expanded={open ? "true" : undefined}
+                          // onClick={handleUserClick}
+                          sx={{
+                            bgcolor: deepPurple[500],
+                            color: "white",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {auth.user?.firstName[0].toUpperCase()}
+                        </Avatar>
+                        <Menu
+                          id="basic-menu"
+                          anchorEl={anchorEl}
+                          open={openUserMenu}
+                          onClose={handleCloseUserMenu}
+                          MenuListProps={{
+                            "aria-labelledby": "basic-button",
+                          }}
+                        >
+                          {/* <MenuItem onClick={handleMyOrderClick}> */}
+                          {auth.user?.role !== "ROLE_ADMIN" ? (
+                            <>
+                              <MenuItem
+                                onClick={() => navigate("/account/order")}
+                              >
+                                My Orders
+                              </MenuItem>
+                            </>
+                          ) : null}
+                          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        </Menu>
+                      </div>
+                    ) : (
+                      <Button
+                        onClick={handleOpen}
+                        className="text-sm font-medium text-gray-800 hover:text-gray-800"
                       >
-                            {auth.user?.firstName[0].toUpperCase()}
-                            </Avatar>
-                            <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={openUserMenu}
-                        onClose={handleCloseUserMenu}
-                        MenuListProps={{
-                          "aria-labelledby": "basic-button",
-                        }}
-                      >
-                        {/* <MenuItem onClick={handleMyOrderClick}> */}
-                        <MenuItem>
-                          {auth.user?.role === "ROLE_ADMIN"
-                            ? "Admin Dashboard"
-                            : "My Orders"}
-                        </MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                      </Menu>
-                    </div>
-                  ) : (
-                <Button
-                      onClick={handleOpen}
-                      className="text-sm font-medium text-gray-800 hover:text-gray-800"
-                    >
-                      Sign in | Register
-                    </Button>
-                  )}
-                  
+                        Sign in | Register
+                      </Button>
+                    )}
                   </div>
                 </div>
 
-                <div className="border-t border-gray-200 px-4 py-6">
-                  
-                 
-                  
-                 
-                </div>
+                <div className="border-t border-gray-200 px-4 py-6"></div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -321,15 +316,14 @@ const handleGotoHome=()=>{
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-               
-                  <span className="sr-only"> Trend Treasures</span>
-                  <img onClick={handleGotoHome}
-                    alt="Logo of Trend Tresaures"
-                    src={Image.path}
-                    className="lg:h-[5rem] w-[5rem] cursor-pointer opacity-80 rounded-sm  rounded-3xl  hover:opacity-100
-                    hover:translate-y-[-0.3rem]"                
-                  />
-                
+                <span className="sr-only"> Trend Treasures</span>
+                <img
+                  onClick={handleGotoHome}
+                  alt="Logo of Trend Tresaures"
+                  src={Image.path}
+                  className="lg:h-[5rem] w-[5rem] cursor-pointer opacity-80 rounded-sm  rounded-3xl  hover:opacity-100
+                    hover:translate-y-[-0.3rem]"
+                />
               </div>
 
               {/* Flyout menus */}
@@ -465,11 +459,11 @@ const handleGotoHome=()=>{
 
               <div className="ml-auto flex items-center mt-2">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                {auth.user ? (
+                  {auth.user ? (
                     <div>
                       <Avatar
                         className="text-white"
-                        onClick={handleUserClick}  
+                        onClick={handleUserClick}
                         aria-controls={open ? "basic-menu" : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? "true" : undefined}
@@ -480,9 +474,9 @@ const handleGotoHome=()=>{
                           cursor: "pointer",
                         }}
                       >
-                            {auth.user?.firstName[0].toUpperCase()}
-                            </Avatar>
-                            <Menu
+                        {auth.user?.firstName[0].toUpperCase()}
+                      </Avatar>
+                      <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={openUserMenu}
@@ -492,16 +486,20 @@ const handleGotoHome=()=>{
                         }}
                       >
                         {/* <MenuItem onClick={handleMyOrderClick}> */}
-                        <MenuItem>
-                          {auth.user?.role === "ROLE_ADMIN"
-                            ? "Admin Dashboard"
-                            : "My Orders"}
-                        </MenuItem>
+                        {auth.user?.role !== "ROLE_ADMIN" ? (
+                          <>
+                            <MenuItem
+                              onClick={() => navigate("/account/order")}
+                            >
+                              My Orders
+                            </MenuItem>
+                          </>
+                        ) : null}
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
-                <Button
+                    <Button
                       onClick={handleOpen}
                       className="text-sm font-medium text-gray-800 hover:text-gray-800"
                     >

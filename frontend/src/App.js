@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { getuser } from "./State/Auth/Action";
 import { useEffect } from "react";
 import Checkout from "./Customers/Components/Checkout/Checkout";
+import Order from "./Customers/Components/Order/Order";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,10 +19,9 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <Checkout />
-      {/* <Routes>
+      <Routes>
         <Route path="/*" element={<CustomerRoutes />} />
-      </Routes> */}
+      </Routes>
     </>
   );
 }
