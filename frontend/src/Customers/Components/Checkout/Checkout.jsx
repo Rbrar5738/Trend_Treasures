@@ -1,15 +1,15 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { useLocation, useNavigate } from 'react-router-dom';
-import DeliveryAddressForm from './DeliveryAddressForm';
-import OrderSummary from './OrderSummary';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { useLocation, useNavigate } from "react-router-dom";
+import DeliveryAddressForm from "./DeliveryAddressForm";
+import OrderSummary from "./OrderSummary";
 
-const steps = [/*'Login', */ 'Delivery Address', 'Order Summary', 'Payment'];
+const steps = [/*'Login', */ "Delivery Address", "Order Summary", "Payment"];
 
 export default function Checkout() {
   const location = useLocation();
@@ -41,7 +41,14 @@ export default function Checkout() {
 
   return (
     <div className="px-10 lg:px-20">
-      <Box sx={{ width: '100%', backgroundColor: '#f5f5f5', padding: '20px', borderRadius: '8px' }}>
+      <Box
+        sx={{
+          width: "100%",
+          backgroundColor: "#f5f5f5",
+          padding: "20px",
+          borderRadius: "8px",
+        }}
+      >
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};
@@ -62,8 +69,7 @@ export default function Checkout() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-       
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
               <Button
                 color="inherit"
                 disabled={activeStep === 0}
@@ -72,15 +78,13 @@ export default function Checkout() {
               >
                 Back
               </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
+              <Box sx={{ flex: "1 1 auto" }} />
               <Button onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             </Box>
-            <div className='mt-10 ml-3'>
-              {
-                initialStep==1?<DeliveryAddressForm/>:<OrderSummary/>
-              }
+            <div className="mt-10 ml-3">
+              {initialStep == 2 ? <OrderSummary /> : <DeliveryAddressForm />}
             </div>
           </React.Fragment>
         )}
