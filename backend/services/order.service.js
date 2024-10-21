@@ -1,6 +1,6 @@
 const Address = require("../models/addressModel");
 const Order = require("../models/orderModel");
-const cartService = require("../services/cartService");
+const cartService = require("./cartService");
 
 async function createOrder(user, shippingAddress) {
   let address;
@@ -71,7 +71,7 @@ async function deliverOrder(orderId) {
   return await order.save();
 }
 
-async function canceedlOrder(orderId) {
+async function cancelledOrder(orderId) {
   const order = await findOrderById(orderId);
   order.orderStatus = "CANCELLED";
 
@@ -112,7 +112,7 @@ module.exports = {
   confirmedOrder,
   shipOrder,
   deliverOrder,
-  canceedlOrder,
+  cancelledOrder,
   findOrderById,
   usersOrderHistory,
   getAllOrders,
