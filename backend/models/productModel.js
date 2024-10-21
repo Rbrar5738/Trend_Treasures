@@ -31,17 +31,14 @@ const productSchema = new mongoose.Schema({
   },
   color: {
     type: String,
-    required: true,
   },
   sizes: [
     {
       name: {
         type: String,
-        required: true,
       },
       quantity: {
         type: Number,
-        required: true,
       },
     },
   ],
@@ -62,6 +59,10 @@ const productSchema = new mongoose.Schema({
   numRatings: {
     type: Number,
     default: 0,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "categories",
   },
   createdAt: {
     type: Date,
