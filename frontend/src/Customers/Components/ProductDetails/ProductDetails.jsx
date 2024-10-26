@@ -1,73 +1,23 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { Radio, RadioGroup } from "@headlessui/react";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import ProductReviewCard from "./ProductReviewCard";
 import "./ProductDetail.css";
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress from "@mui/material/LinearProgress";
 import HomeCarouselImages from "../HomeCarousel/HomeCarouselImages";
 import ProductCard from "../Product/ProductCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import img from "./5.avif";
 import img1 from "./2.avif";
+import { useDispatch, useSelector } from "react-redux";
+import { findProductById } from "../../../State/Product/Action.js";
+import { addItemToCart } from "../../../State/Cart/Action.js";
 
-
-const product = {
-  name: "Basic Tee 6-Pack",
-  price: "$192",
-  href: "#",
-  breadcrumbs: [
-    { id: 1, name: "Men", href: "#" },
-    { id: 2, name: "Clothing", href: "#" },
-  ],
-  images: [
-    {
-      src:img,
-      alt: "Two each of gray, white, and black shirts laying flat.",
-    },
-    {
-      src:img1,
-      alt: "Model wearing plain black basic tee.",
-    },
-    {
-      src:img,
-      alt: "Model wearing plain gray basic tee.",
-    },
-    {
-      src:img,
-      alt: "Model wearing plain white basic tee.",
-    },
-  ],
-  colors: [
-    { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-    { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-    { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
-  ],
-  sizes: [
- 
-    { name: "S", inStock: true },
-    { name: "M", inStock: true },
-    { name: "L", inStock: true },
-    { name: "XL", inStock: true },
-  
-  ],
-  description:
-    'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
-  highlights: [
-    "Hand cut and sewn locally",
-    "Dyed with our proprietary colors",
-    "Pre-washed & pre-shrunk",
-    "Ultra-soft 100% cotton",
-  ],
-  details:
-    'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-};
 const reviews = { href: "#", average: 4, totalCount: 117 };
 
 function classNames(...classes) {
@@ -75,12 +25,33 @@ function classNames(...classes) {
 }
 
 export default function ProductDetails() {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
-  const navigate=useNavigate()
-  const handleAddToCart=()=>{
-    navigate("/cart")
-  }
+  const jwt = localStorage.getItem("jwt");
+  const navigate = useNavigate();
+  const { productId } = useParams();
+  const dispatch = useDispatch();
+  const { customersProduct } = useSelector((store) => store);
+
+  const [selectedSize, setSelectedSize] = useState(
+    customersProduct.product?.sizes?.[0] || null
+  );
+  const handleAddToCart = () => {
+    const data = { productId: productId, size: selectedSize.name };
+    dispatch(addItemToCart(data));
+    navigate("/cart");
+  };
+
+  useEffect(() => {
+    const data = { productId: productId };
+    dispatch(findProductById(data));
+    // dispatch(getAllReviews(productId));
+  }, [productId]);
+
+  useEffect(() => {
+    if (customersProduct.product?.sizes) {
+      setSelectedSize(customersProduct.product.sizes[0]);
+    }
+  }, [customersProduct.product?.sizes]);
+
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -89,7 +60,7 @@ export default function ProductDetails() {
             role="list"
             className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
           >
-            {product.breadcrumbs.map((breadcrumb) => (
+            {/* {product.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
                   <a
@@ -110,14 +81,14 @@ export default function ProductDetails() {
                   </svg>
                 </div>
               </li>
-            ))}
+            ))} */}
             <li className="text-sm">
               <a
-                href={product.href}
+                // href={product.href}
                 aria-current="page"
                 className="font-medium text-gray-500 hover:text-gray-600"
               >
-                {product.name}
+                {customersProduct.product?.title}
               </a>
             </li>
           </ol>
@@ -127,13 +98,13 @@ export default function ProductDetails() {
           <div className="flex flex-col items-center">
             <div className="overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem] mainImage">
               <img
-                alt={product.images[0].alt}
-                src={product.images[0].src}
+                alt={customersProduct.product?.title}
+                src={customersProduct.product?.imageUrl}
                 className="h-full w-full object-cover object-center"
               />
             </div>
             <div className="flex flex-wrap space-x-5 justify-center ">
-              {product.images.map((item) => (
+              {/* {product.images.map((item) => (
                 <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4 otherImage">
                   <img
                     alt={item.alt}
@@ -141,7 +112,7 @@ export default function ProductDetails() {
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
 
@@ -149,10 +120,10 @@ export default function ProductDetails() {
           <div className="lg:col-span-1 max-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24">
             <div className="lg:col-span-2">
               <h1 className="text-lg lg:text-xl font-semibold text-gray-900">
-                Brand Name
+                {customersProduct.product?.brand}
               </h1>
               <h1 className="text-lg lg:text-xl text-gray-900 opacity-70 pt-1">
-                Product Name
+                {customersProduct.product?.title}
               </h1>
             </div>
 
@@ -160,15 +131,29 @@ export default function ProductDetails() {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6">
-                <p className="font-semibold"> $100</p>
-                <p className="font-semibold opacity-50 line-through"> $200</p>
-                <p className="font-bold text-green-600 "> 50%</p>
+                <p className="font-semibold">
+                  {" "}
+                  ${customersProduct.product?.discountedPrice}
+                </p>
+                <p className="font-semibold opacity-50 line-through">
+                  {" "}
+                  ${customersProduct.product?.price}
+                </p>
+                <p className="font-bold text-green-600 ">
+                  {" "}
+                  {customersProduct.product?.discountPersent}%
+                </p>
               </div>
 
               {/* Reviews */}
               <div className="mt-6">
                 <div className="flex items-center space-x-3">
-                  <Rating name="read-only" value={3.5} readOnly precision={0.5}/>
+                  <Rating
+                    name="read-only"
+                    value={3.5}
+                    readOnly
+                    precision={0.5}
+                  />
                   <p className="opacity-50 text-sm pt-3">5000 Ratings</p>
                   <p className="ml-3 text-sm font-medium pt-3 text-indigo-600 hover:text-indigo-500 cursor-pointer">
                     300 Reviews
@@ -177,13 +162,10 @@ export default function ProductDetails() {
               </div>
 
               <form className="mt-10">
-              
-
                 {/* Sizes */}
                 <div className="mt-10">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                
                   </div>
 
                   <fieldset aria-label="Choose a size" className="mt-4">
@@ -192,20 +174,20 @@ export default function ProductDetails() {
                       onChange={setSelectedSize}
                       className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
                     >
-                      {product.sizes.map((size) => (
+                      {customersProduct.product?.sizes.map((size) => (
                         <Radio
                           key={size.name}
                           value={size}
-                          disabled={!size.inStock}
+                          disabled={!size.quantity}
                           className={classNames(
-                            size.inStock
-                              ? "cursor-pointer bg-white text-gray-900 shadow-sm"
+                            size.quantity
+                              ? "cursor-pointer bg-white text-gray-900 shadow-sm hover:bg-gray-500"
                               : "cursor-not-allowed bg-gray-50 text-gray-200",
                             "group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none data-[focus]:ring-2 data-[focus]:ring-indigo-500 sm:flex-1 sm:py-6"
                           )}
                         >
                           <span>{size.name}</span>
-                          {size.inStock ? (
+                          {size.quantity ? (
                             <span
                               aria-hidden="true"
                               className="pointer-events-none absolute -inset-px rounded-md border-2 border-transparent group-data-[focus]:border group-data-[checked]:border-indigo-500"
@@ -237,7 +219,14 @@ export default function ProductDetails() {
                   </fieldset>
                 </div>
 
-              <Button onClick={handleAddToCart} color="secondary" variant="contained" sx={{mt:"1rem",px:"2rem", py:"1rem"}}>Add to Cart</Button>
+                <Button
+                  onClick={handleAddToCart}
+                  color="secondary"
+                  variant="contained"
+                  sx={{ mt: "1rem", px: "2rem", py: "1rem" }}
+                >
+                  Add to Cart
+                </Button>
               </form>
             </div>
 
@@ -247,13 +236,13 @@ export default function ProductDetails() {
                 <h3 className="sr-only">Description</h3>
 
                 <div className="space-y-6">
-                  <p className="text-base text-gray-900">
-                    {product.description}
+                  <p className="text-base text-gray-900 text-justify">
+                    {customersProduct.product?.description}
                   </p>
                 </div>
               </div>
 
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <h3 className="text-sm font-medium text-gray-900">
                   Highlights
                 </h3>
@@ -267,102 +256,154 @@ export default function ProductDetails() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
                 <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-600">{product.details}</p>
+                  {/* <p className="text-sm text-gray-600">{product.details}</p> */}
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-{/*Ratings and review */}
-<section className="px-6">
+        {/*Ratings and review */}
+        <section className="px-6">
+          <h1 className="font-semibold text-lg pb-4">
+            Recent Reviews and Ratings
+          </h1>
+          <div className="border p-5">
+            <Grid container spacing={7}>
+              <Grid item xs={7}>
+                <div className="space-y-5">
+                  {[1, 1, 1].map((item) => (
+                    <ProductReviewCard />
+                  ))}
+                </div>
+              </Grid>
+              <Grid item xs={5}>
+                <h1 className="text-sl font-semibold pb-1">Product Ratings</h1>
+                <div className="flex items-center space-x-2">
+                  <Rating
+                    name="read-only"
+                    value={4.6}
+                    precision={0.5}
+                    readOnly
+                  />
+                  <p className=" mt-3 opacity-60">5000 Ratings</p>
+                </div>
+                <Box>
+                  <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Excellent</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
+                        variant="determinate"
+                        value={40}
+                        color="success"
+                      />
+                    </Grid>
+                  </Grid>
 
-  <h1 className="font-semibold text-lg pb-4">Recent Reviews and Ratings</h1>
-  <div className="border p-5">
-    <Grid container spacing={7}>
-      <Grid item xs={7}>
-                    <div className="space-y-5">
-                      {[1,1,1].map((item)=>  <ProductReviewCard />)}
-                    </div>
-        </Grid> 
-        <Grid item xs={5}>
-          <h1 className="text-sl font-semibold pb-1">Product Ratings</h1>
-          <div className="flex items-center space-x-2">
-            <Rating name="read-only" value={4.6} precision={0.5} readOnly/>
-            <p className=" mt-3 opacity-60">5000 Ratings</p>
+                  <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Very Good</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
+                        variant="determinate"
+                        value={30}
+                        color="success"
+                      />
+                    </Grid>
+                  </Grid>
+
+                  <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Good</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
+                        variant="determinate"
+                        value={50}
+                      />
+                    </Grid>
+                  </Grid>
+
+                  <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Avarage</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
+                        variant="determinate"
+                        value={40}
+                        color="warning"
+                      />
+                    </Grid>
+                  </Grid>
+
+                  <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    gap={2}
+                  >
+                    <Grid item xs={2}>
+                      <p>Poor</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
+                        variant="determinate"
+                        value={10}
+                        color="error"
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
           </div>
-          <Box>
-                    <Grid container justifyContent={"center"} alignItems={"center"} gap={2}>
-                      <Grid item xs={2}>
-                        <p>Excellent</p>
-                        </Grid>
-                        <Grid item xs={7}>
-                        <LinearProgress sx={{bgcolor:"#d0d0d0", borderRadius:4, height:7}} variant="determinate" value={40} color="success" />
-                        </Grid>
-                    </Grid>
+        </section>
 
-                    <Grid container justifyContent={"center"} alignItems={"center"} gap={2}>
-                      <Grid item xs={2}>
-                        <p>Very Good</p>
-                        </Grid>
-                        <Grid item xs={7}>
-                        <LinearProgress sx={{bgcolor:"#d0d0d0", borderRadius:4, height:7}} variant="determinate" value={30} color="success" />
-                        </Grid>
-                    </Grid>
+        {/*Similar Products */}
+        <section className="pt-10 px-5">
+          <h1 className="py-5 text-4xl font-bold">Similar Products</h1>
 
-                    <Grid container justifyContent={"center"} alignItems={"center"} gap={2}>
-                      <Grid item xs={2}>
-                        <p>Good</p>
-                        </Grid>
-                        <Grid item xs={7}>
-                        <LinearProgress sx={{bgcolor:"#d0d0d0", borderRadius:4, height:7}} variant="determinate" value={50}  />
-                        </Grid>
-                    </Grid>
-
-                    <Grid container justifyContent={"center"} alignItems={"center"} gap={2}>
-                      <Grid item xs={2}>
-                        <p>Avarage</p>
-                        </Grid>
-                        <Grid item xs={7}>
-                        <LinearProgress sx={{bgcolor:"#d0d0d0", borderRadius:4, height:7}} variant="determinate" value={40} color="warning" />
-                        </Grid>
-                    </Grid>
-
-                    <Grid container justifyContent={"center"} alignItems={"center"} gap={2}>
-                      <Grid item xs={2}>
-                        <p>Poor</p>
-                        </Grid>
-                        <Grid item xs={7}>
-                        <LinearProgress sx={{bgcolor:"#d0d0d0", borderRadius:4, height:7}} variant="determinate" value={10} color="error" />
-                        </Grid>
-                    </Grid>
-
-                 
-          </Box>
-         </Grid>
-
-    </Grid>
-
-  </div>
-</section>
-
-{/*Similar Products */}
-<section className="pt-10 px-5">
-  <h1 className="py-5 text-4xl font-bold">Similar Products</h1>
-
-  <div className="flex flex-wrap space-y-5 justify-center">
-  {HomeCarouselImages.images.map((item)=><ProductCard product={item}/>)}
-
-  </div>
-
-</section>
-
+          <div className="flex flex-wrap space-y-5 justify-center">
+            {HomeCarouselImages.images.map((item) => (
+              <ProductCard product={item} />
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

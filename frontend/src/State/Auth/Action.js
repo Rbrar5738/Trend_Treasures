@@ -13,6 +13,7 @@ import {
   GET_USER_FAILURE,
   LOGOUT,
 } from "./ActionType";
+const jwt = localStorage.getItem("jwt");
 
 // const token = localStorage.getItem("jwt");
 
@@ -78,6 +79,12 @@ export const getuser = (jwt) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+  // {
+  //   jwt && window.location.reload();
+  // }
   localStorage.removeItem("jwt");
+
   dispatch({ type: LOGOUT, payload: null });
+
+  localStorage.clear();
 };

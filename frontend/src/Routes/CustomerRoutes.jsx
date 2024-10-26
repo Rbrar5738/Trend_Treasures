@@ -4,10 +4,11 @@ import HomePage from "../Customers/Pages/HomePage/HomePage";
 import Cart from "../Customers/Components/Cart/Cart";
 
 import Footer from "../Customers/Components/Footer/Footer";
-import Product from "../Customers/Components/Product/Product";
+import Product from "../Customers/Components/Product/Product.jsx";
 import ProductDetails from "../Customers/Components/ProductDetails/ProductDetails";
 import Checkout from "../Customers/Components/Checkout/Checkout";
-import Navigation from "../Customers/Components/Navigation/Navigation";
+// import Navigation from "../Customers/Components/Navigation/Navigation";
+import Navigation from "../Customers/Components/Navbar/Navigation";
 import LoginForm from "../Customers/Auth/LoginForm";
 import Order from "../Customers/Components/Order/Order";
 
@@ -22,7 +23,11 @@ const CustomerRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/:levelone/:leveltwo/:levelthree" element={<Product />} />
+        <Route
+          path="/:lavelOne/:lavelTwo/:lavelThree"
+          element={<Product />}
+        ></Route>
+
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<HomePage />} />

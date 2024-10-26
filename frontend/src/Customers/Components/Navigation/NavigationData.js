@@ -9,14 +9,16 @@ const NavigationData = {
         {
           name: "New Arrivals",
           href: "/",
-          imageSrc: img,
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Basic Tees",
           href: "/",
-          imageSrc: img,
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
@@ -29,12 +31,13 @@ const NavigationData = {
             { name: "Tops", id: "top", href: `{women/clothing/tops}` },
             { name: "Dresses", id: "women_dress", href: "#" },
             { name: "Women Jeans", id: "women_jeans" },
-            { name: "Skirts", id: "skirts" },
+            { name: "Lengha Choli", id: "lengha_choli" },
             { name: "Sweaters", id: "sweater" },
             { name: "T-Shirts", id: "t-shirt" },
             { name: "Jackets", id: "jacket" },
             { name: "Gouns", id: "gouns" },
-            { name: "Coats", id: "coats" },
+            { name: "Sarees", id: "saree" },
+            { name: "Kurtas", id: "kurtas" },
           ],
         },
         {
@@ -42,7 +45,7 @@ const NavigationData = {
           name: "Accessories",
           items: [
             { name: "Watches", id: "watch" },
-            { name: "Gloves", id: "gloves" },
+            { name: "Wallets", id: "wallet" },
             { name: "Bags", id: "bag" },
             { name: "Sunglasses", id: "sunglasse" },
             { name: "Hats", id: "hat" },
@@ -69,14 +72,16 @@ const NavigationData = {
         {
           name: "New Arrivals",
           id: "#",
-          imageSrc: img,
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
           imageAlt:
             "Drawstring top with elastic loop closure and textured interior padding.",
         },
         {
           name: "Artwork Tees",
           id: "#",
-          imageSrc: img,
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
           imageAlt:
             "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
         },
@@ -86,27 +91,25 @@ const NavigationData = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Pants", id: "pants" },
+            { name: "Mens Kurtas", id: "mens_kurta" },
             { name: "Shirt", id: "shirt" },
             { name: "Men Jeans", id: "men_jeans" },
-            { name: "Sweaters", id: "Sweaters" },
+            { name: "Sweaters", id: "#" },
             { name: "T-Shirts", id: "t-shirt" },
-            { name: "Jackets", id: "Jackets" },
-            { name: "Activewear", id: "Activewear" },
-            { name: "Coats", id: "jackets" },
+            { name: "Jackets", id: "#" },
+            { name: "Activewear", id: "#" },
           ],
         },
         {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", id: "watches" },
-            { name: "Wallets", id: "wallets" },
-            { name: "Sunglasses", id: "sunglasses" },
-            { name: "Hats", id: "hats" },
-            { name: "Belts", id: "belts" },
-            { name: "Shoes", id: "shoes" },
-            { name: "Gloves", id: "sloves" },
+            { name: "Watches", id: "#" },
+            { name: "Wallets", id: "#" },
+            { name: "Bags", id: "#" },
+            { name: "Sunglasses", id: "#" },
+            { name: "Hats", id: "#" },
+            { name: "Belts", id: "#" },
           ],
         },
         {
@@ -123,8 +126,8 @@ const NavigationData = {
     },
   ],
   pages: [
-    { name: "About Us", id: "/" },
-    { name: "Contact Us", id: "/" },
+    { name: "Company", id: "/" },
+    { name: "Stores", id: "/" },
   ],
 };
 export default NavigationData;
