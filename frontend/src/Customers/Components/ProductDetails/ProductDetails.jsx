@@ -17,6 +17,7 @@ import img1 from "./2.avif";
 import { useDispatch, useSelector } from "react-redux";
 import { findProductById } from "../../../State/Product/Action.js";
 import { addItemToCart } from "../../../State/Cart/Action.js";
+import CategoryProduct from "./CategoryProduct.jsx";
 
 const reviews = { href: "#", average: 4, totalCount: 117 };
 
@@ -48,7 +49,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
     if (customersProduct.product?.sizes) {
-      setSelectedSize(customersProduct.product.sizes[0]);
+      setSelectedSize(customersProduct.product?.sizes[0]);
     }
   }, [customersProduct.product?.sizes]);
 
@@ -234,6 +235,7 @@ export default function ProductDetails() {
               {/* Description and details */}
               <div>
                 <h3 className="sr-only">Description</h3>
+                <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
                 <div className="space-y-6">
                   <p className="text-base text-gray-900 text-justify">
@@ -259,8 +261,6 @@ export default function ProductDetails() {
               </div> */}
 
               <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
                 <div className="mt-4 space-y-6">
                   {/* <p className="text-sm text-gray-600">{product.details}</p> */}
                 </div>
@@ -395,14 +395,11 @@ export default function ProductDetails() {
         </section>
 
         {/*Similar Products */}
+
         <section className="pt-10 px-5">
           <h1 className="py-5 text-4xl font-bold">Similar Products</h1>
 
-          <div className="flex flex-wrap space-y-5 justify-center">
-            {HomeCarouselImages.images.map((item) => (
-              <ProductCard product={item} />
-            ))}
-          </div>
+          <CategoryProduct product={customersProduct.product?.category} />
         </section>
       </div>
     </div>

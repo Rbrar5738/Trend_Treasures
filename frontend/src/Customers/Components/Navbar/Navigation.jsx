@@ -7,6 +7,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
+import { Image } from "./Image";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { navigation } from "../../../config/navigationMenu";
@@ -79,6 +81,9 @@ export default function Navigation() {
     handleCloseUserMenu();
     navigate("/account/order");
   };
+  const handleGotoHome = () => {
+    navigate("/");
+  };
 
   return (
     <div className="bg-white pb-10">
@@ -146,7 +151,7 @@ export default function Navigation() {
                         key={category.name}
                         className="space-y-10 px-4 pb-8 pt-10"
                       >
-                        <div className="grid grid-cols-2 gap-x-4">
+                        {/* <div className="grid grid-cols-2 gap-x-4">
                           {category.featured.map((item) => (
                             <div
                               key={item.name}
@@ -159,8 +164,8 @@ export default function Navigation() {
                                   className="object-cover object-center"
                                 />
                               </div>
-                              <a
-                                href={item.href}
+                              <p
+                                // href={item.href}
                                 className="mt-6 block font-medium text-gray-900"
                               >
                                 <span
@@ -168,13 +173,13 @@ export default function Navigation() {
                                   aria-hidden="true"
                                 />
                                 {item.name}
-                              </a>
+                              </p>
                               <p aria-hidden="true" className="mt-1">
                                 Shop now
                               </p>
                             </div>
                           ))}
-                        </div>
+                        </div> */}
                         {category.sections.map((section) => (
                           <div key={section.name}>
                             <p
@@ -192,7 +197,7 @@ export default function Navigation() {
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
                                   <p className="-m-2 block p-2 text-gray-500">
-                                    {"item.name"}
+                                    {item.name}
                                   </p>
                                 </li>
                               ))}
@@ -223,13 +228,13 @@ export default function Navigation() {
                       href="/"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
-                      Sign in
+                      Sign in | Register
                     </a>
                   </div>
                 </div>
 
-                <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="/" className="-m-2 flex items-center p-2">
+                {/* <div className="border-t border-gray-200 px-4 py-6"> */}
+                {/* <a href="/" className="-m-2 flex items-center p-2">
                     <img
                       src="https://tailwindui.com/img/flags/flag-canada.svg"
                       alt=""
@@ -239,8 +244,8 @@ export default function Navigation() {
                       CAD
                     </span>
                     <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
+                  </a> */}
+                {/* </div> */}
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -249,7 +254,7 @@ export default function Navigation() {
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          Get free delivery on orders over $100
+          Trend Treasures, Shop the Trends, Treasure the Finds!
         </p>
 
         <nav aria-label="Top" className="mx-auto">
@@ -267,11 +272,13 @@ export default function Navigation() {
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
                 <Link to="/">
-                  <span className="sr-only">Your Company</span>
+                  <span className="sr-only">Trend Treasures</span>
                   <img
-                    src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png"
-                    alt="Shopwithzosh"
-                    className="h-8 w-8 mr-2"
+                    onClick={handleGotoHome}
+                    alt="Logo of Trend Tresaures"
+                    src={Image.path}
+                    className="lg:h-[5rem] w-[5rem] cursor-pointer opacity-80 rounded-sm  rounded-3xl  hover:opacity-100
+                    hover:translate-y-[-0.3rem]"
                   />
                 </Link>
               </div>
@@ -315,7 +322,7 @@ export default function Navigation() {
                               <div className="relative bg-white">
                                 <div className="mx-auto max-w-7xl px-8">
                                   <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                                    <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                    {/* <div className="col-start-2 grid grid-cols-2 gap-x-8">
                                       {category.featured.map((item) => (
                                         <div
                                           key={item.name}
@@ -346,7 +353,7 @@ export default function Navigation() {
                                           </p>
                                         </div>
                                       ))}
-                                    </div>
+                                    </div> */}
                                     <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                       {category.sections.map((section) => (
                                         <div key={section.name}>
@@ -458,9 +465,9 @@ export default function Navigation() {
                   ) : (
                     <Button
                       onClick={handleOpen}
-                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                      className="text-sm font-medium text-gray-800 hover:text-gray-800"
                     >
-                      Signin
+                      Sign in | Register
                     </Button>
                   )}
                 </div>
@@ -469,10 +476,10 @@ export default function Navigation() {
                 <div className="flex lg:ml-6">
                   <p className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
-                    <MagnifyingGlassIcon
-                      className="h-6 w-6"
+                    {/* <MagnifyingGlassIcon */}
+                    {/* className="h-6 w-6"
                       aria-hidden="true"
-                    />
+                    /> */}
                   </p>
                 </div>
 

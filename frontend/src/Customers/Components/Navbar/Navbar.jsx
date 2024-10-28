@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { Image } from "./Image";
 
 function Navbar() {
   const [isNavigation, setIsNavigation] = useState(false);
@@ -17,12 +18,14 @@ function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center py-6">
               <img
-                src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png"
-                alt="Shopwithzosh"
-                className="h-8 w-8 mr-2"
+                onClick={handleGotoHome}
+                alt="Logo of Trend Tresaures"
+                src={Image.path}
+                className="lg:h-[5rem] w-[5rem] cursor-pointer opacity-80 rounded-sm  rounded-3xl  hover:opacity-100
+                    hover:translate-y-[-0.3rem]"
               />
               <span className="font-bold text-white text-lg">
-                Shop With Zosh
+                Trend Treasures
               </span>
             </Link>
 

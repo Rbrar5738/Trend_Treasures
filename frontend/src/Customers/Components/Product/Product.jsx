@@ -466,6 +466,8 @@ export default function Product() {
                 </form>
 
                 {/* Product grid */}
+               
+                
                 <div className="lg:col-span-4 w-full ">
                   <div className="flex flex-wrap justify-center bg-white border py-5 rounded-md ">
                     {customersProduct?.products?.content?.map((item) => (
