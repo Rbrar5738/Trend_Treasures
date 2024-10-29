@@ -14,6 +14,9 @@ import {
   DELETE_PRODUCT_REQUEST,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAILURE,
+  FIND_PRODUCT_REQUEST,
+  FIND_PRODUCT_SUCCESS,
+  FIND_PRODUCT_FAILURE,
 } from "./ActionType";
 import api, { API_BASE_URL } from "../../config/apiConfig";
 
@@ -37,7 +40,7 @@ export const findProducts = (reqData) => async (dispatch) => {
       `/api/products?color=${colors}&size=${sizes}&minPrice=${minPrice}&maxPrice=${maxPrice}&minDiscount=${minDiscount}&category=${category}&sort=${sort}&pageNumber=${pageNumber}&pageSize=${pageSize}`
     );
 
-    console.log("get product by category - ", data);
+    // console.log("get product by category - ", data);
     dispatch({
       type: FIND_PRODUCTS_BY_CATEGORY_SUCCESS,
       payload: data,
@@ -66,6 +69,27 @@ export const findProductById = (reqData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FIND_PRODUCT_BY_ID_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const findProductByCategory = (id) => async (dispatch) => {
+  dispatch({ type: FIND_PRODUCT_REQUEST });
+  try {
+    const { data } = await api.get(`/api/products/category/${id}`);
+
+    dispatch({
+      type: FIND_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log("here", error.response.data.message);
+    dispatch({
+      type: FIND_PRODUCT_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

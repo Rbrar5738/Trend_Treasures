@@ -1,6 +1,22 @@
 const Category = require("../models/category.model");
 const Product = require("../models/product.model");
 
+// Find products by category name
+async function findProductByCategory(id) {
+  // console.log("hello");
+  const category = await Category.find();
+  // console.log(category);
+  if (!category) {
+    throw new Error(`Category not found with name - ${categoryName}`);
+  }
+
+  // Find all products with the matched category ID
+  const products = await Product.find({ category: id });
+  // console.log("product",products);
+
+  return products;
+}
+
 // Create a new product
 async function createProduct(reqData) {
   let topLevel = await Category.findOne({ name: reqData.topLavelCategory });
@@ -172,4 +188,5 @@ module.exports = {
   getAllProducts,
   findProductById,
   createMultipleProduct,
+  findProductByCategory,
 };

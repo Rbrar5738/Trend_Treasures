@@ -17,20 +17,22 @@ import {
 } from "./ActionType";
 
 export const addItemToCart = (reqData) => async (dispatch) => {
+  const jwt = localStorage.getItem("jwt");
   try {
     dispatch({ type: ADD_ITEM_TO_CART_REQUEST });
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${reqData.jwt}`,
-    //     "Content-Type": "application/json",
-    //   },
-    // };
+    const config = {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+      },
+    };
     const { data } = await api.put(`${API_BASE_URL}/api/cart/add`, reqData);
     console.log("add item to cart ", data);
     dispatch({
       type: ADD_ITEM_TO_CART_SUCCESS,
       payload: data,
     });
+    dispatch(getCart());
     console.log("Added to cart", data);
   } catch (error) {
     dispatch({
@@ -43,15 +45,16 @@ export const addItemToCart = (reqData) => async (dispatch) => {
   }
 };
 export const getCart = () => async (dispatch) => {
+  const jwt = localStorage.getItem("jwt");
   try {
     dispatch({ type: GET_CART_REQUEST });
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${jwt}`,
-    //     "Content-Type": "application/json",
-    //   },
-    // };
-    const { data } = await api.get(`${API_BASE_URL}/api/cart/`);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await api.get(`${API_BASE_URL}/api/cart/`, config);
     // console.log("cart ", data);
     dispatch({
       type: GET_CART_SUCCESS,

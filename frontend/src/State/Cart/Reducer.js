@@ -11,6 +11,7 @@ import {
   UPDATE_CART_ITEM_FAILURE,
   UPDATE_CART_ITEM_REQUEST,
   UPDATE_CART_ITEM_SUCCESS,
+  CLEAR_CART,
 } from "./ActionType";
 
 const initialState = {
@@ -41,7 +42,7 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: action.payload.cartItems,
-        cart:action.payload,
+        cart: action.payload,
         loading: false,
       };
     case GET_CART_FAILURE:
@@ -77,6 +78,13 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+        loading: false,
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cart: null,
+        cartItems: [],
         loading: false,
       };
     default:

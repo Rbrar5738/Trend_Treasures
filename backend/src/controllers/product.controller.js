@@ -56,12 +56,14 @@ async function findProductById(req, res) {
 
 // Find products by category
 async function findProductByCategory(req, res) {
+  const category = req.params.id;
+
   try {
-    const category = req.params.category;
+    // const category = req.body.category;
     const products = await productService.findProductByCategory(category);
-    res.json(products);
+    return res.status(200).send(products);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(404).json({ message: err.message });
   }
 }
 
@@ -79,9 +81,8 @@ async function searchProduct(req, res) {
 // Get all products with filtering and pagination
 async function getAllProducts(req, res) {
   try {
-   
     const products = await productService.getAllProducts(req.query);
-    
+
     return res.status(200).send(products);
   } catch (err) {
     return res.status(500).json({ error: err.message });

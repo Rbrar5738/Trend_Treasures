@@ -29,15 +29,14 @@ export const authReducer = (state = initialState, action) => {
         isLloading: true,
         error: null,
       };
-      case REGISTER_SUCCESS:
-       
-          return {
-            ...state,
-            
-            isLloading: false,
-            error: null,
-            successmessage: true,
-          };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+
+        isLloading: false,
+        error: null,
+        successmessage: true,
+      };
 
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
@@ -65,9 +64,9 @@ export const authReducer = (state = initialState, action) => {
         successmessage: false,
       };
     case LOGOUT:
-      return {
-        initialState,
-      };
+      localStorage.removeItem("jwt");
+      return { ...state, jwt: null, user: null };
+
     default:
       return state;
   }

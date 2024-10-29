@@ -13,6 +13,8 @@ import {
   GET_USER_FAILURE,
   LOGOUT,
 } from "./ActionType";
+import { getCart } from "../Cart/Action";
+import { CLEAR_CART } from "../Cart/ActionType";
 const jwt = localStorage.getItem("jwt");
 
 // const token = localStorage.getItem("jwt");
@@ -51,40 +53,38 @@ export const login = (userData) => async (dispatch) => {
       localStorage.setItem("jwt", user.jwt);
     }
     dispatch(loginSucess(user.jwt));
+    dispatch(getCart(user.jwt));
   } catch (error) {
     console.log(error.response.data.message);
     dispatch(loginFailure(error.response.data.message));
   }
 };
 
-const getuserRequest = () => ({ type: GET_USER_REQUEST });
-const getuserSucess = (user) => ({ type: GET_USER_SUCCESS, payload: user });
-const getuserFailure = (error) => ({ type: GET_USER_FAILURE, payload: error });
-
-export const getuser = (jwt) => async (dispatch) => {
-  dispatch(getuserRequest());
-  // console.log("jwt", jwt);
-  try {
-    const response = await axios.get(`${API_BASE_URL}/users/profile`, {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    });
-    const user = response.data;
-
-    dispatch(getuserSucess(user));
-  } catch (error) {
-    dispatch(getuserFailure(error.message));
-  }
+//  get user from token
+export const getuser = (token) => {
+  return async (dispatch) => {
+    dispatch({ type: GET_USER_REQUEST });
+    try {
+      const response = await axios.get(`${API_BASE_URL}/users/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const user = response.data;
+      dispatch({ type: GET_USER_SUCCESS, payload: user });
+      console.log("req User ", user);
+    } catch (error) {
+      const errorMessage = error.message;
+      dispatch({ type: GET_USER_FAILURE, payload: errorMessage });
+    }
+  };
 };
 
-export const logout = () => (dispatch) => {
-  // {
-  //   jwt && window.location.reload();
-  // }
-  localStorage.removeItem("jwt");
-
-  dispatch({ type: LOGOUT, payload: null });
-
-  localStorage.clear();
+export const logout = () => {
+  return (dispatch) => {
+    dispatch({ type: LOGOUT });
+    // localStorage.clear();
+    localStorage.removeItem("jwt");
+    dispatch({ type: CLEAR_CART });
+  };
 };

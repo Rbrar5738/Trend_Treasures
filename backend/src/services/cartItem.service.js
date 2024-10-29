@@ -33,7 +33,7 @@ async function updateCartItem(userId, cartItemId, cartItemData) {
     item.discountedPrice = item.quantity * item.product.discountedPrice;
 
     const updatedCartItem = await item.save();
-    console.log("here", updatedCartItem);
+    // console.log("here", updatedCartItem);
     return updatedCartItem;
   } else {
     throw new Error("You can't update another user's cart_item");

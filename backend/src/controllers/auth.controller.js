@@ -18,7 +18,7 @@ const register = async (req, res) => {
 };
 const login = async (req, res) => {
   const products = await Product.find({});
-  console.log(products);
+
   const { password, email } = req.body;
   try {
     const user = await userService.getUserByEmail(email);
