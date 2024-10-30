@@ -1,6 +1,8 @@
 // productController.js
+const Category = require("../models/category.model.js");
 const productService = require("../services/product.service.js");
 
+const Product = require("../models/product.model.js");
 // Create a new product
 async function createProduct(req, res) {
   try {
@@ -82,7 +84,7 @@ async function searchProduct(req, res) {
 async function getAllProducts(req, res) {
   try {
     const products = await productService.getAllProducts(req.query);
-
+    // console.log(products);
     return res.status(200).send(products);
   } catch (err) {
     return res.status(500).json({ error: err.message });

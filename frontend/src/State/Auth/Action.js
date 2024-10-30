@@ -55,8 +55,8 @@ export const login = (userData) => async (dispatch) => {
     dispatch(loginSucess(user.jwt));
     dispatch(getCart(user.jwt));
   } catch (error) {
-    console.log(error.response.data.message);
-    dispatch(loginFailure(error.response.data.message));
+    console.log("here too", error.response.data.error);
+    dispatch(loginFailure(error.response.data.error));
   }
 };
 
@@ -72,7 +72,7 @@ export const getuser = (token) => {
       });
       const user = response.data;
       dispatch({ type: GET_USER_SUCCESS, payload: user });
-      console.log("req User ", user);
+      // console.log("req User ", user);
     } catch (error) {
       const errorMessage = error.message;
       dispatch({ type: GET_USER_FAILURE, payload: errorMessage });

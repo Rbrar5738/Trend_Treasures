@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import HomeSectionCardMen from "./HomeSectionCardMen.jsx";
+import HomeSectionCardMen1 from "./HomeSectionCardMen1.jsx";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Button } from "react-bootstrap";
@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const HomeSectionCarsousal = () => {
+const HomeSectionCarsousal1 = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const dispatch = useDispatch();
   const { customersProduct } = useSelector((store) => store);
@@ -39,12 +39,12 @@ const HomeSectionCarsousal = () => {
   const syncActiveIndex = ({ item }) => setActiveIndex(item);
 
   useEffect(() => {
-    dispatch(findProductByCategory("67217443839b69f713d02d8e"));
+    dispatch(findProductByCategory("672173df839b69f713d02d8d"));
   }, []);
-  // console.log(customersProduct);
+  
 
   const items = customersProduct?.products?.map((item, index) => (
-    <HomeSectionCardMen item={item} key={index} />
+    <HomeSectionCardMen1 item={item} key={index} />
   ));
 
   return (
@@ -97,4 +97,4 @@ const HomeSectionCarsousal = () => {
   );
 };
 
-export default HomeSectionCarsousal;
+export default HomeSectionCarsousal1;

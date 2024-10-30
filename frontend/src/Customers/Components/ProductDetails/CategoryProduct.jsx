@@ -30,7 +30,7 @@ const CategoryProduct = ({ product }) => {
   }, [product?.name]);
   // console.log("here", prod
 
-  console.log(customersProduct);
+  // console.log(customersProduct);
 
   return (
     <>

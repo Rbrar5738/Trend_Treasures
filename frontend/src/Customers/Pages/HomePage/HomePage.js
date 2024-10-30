@@ -1,8 +1,12 @@
 import React from "react";
 import MainCarousel from "../../Components/HomeCarousel/MainCarousel";
 import HomeSectionCarsousal from "./HomeSectionCard/HomeSectionCarsousal";
+import HomeSectionCarsousal1 from "./HomeSectionCard/HomeSectionCarsousal1";
+import { data } from "./data.js";
+import HomeSectionCardMen from "./HomeSectionCard/HomeSectionCardMen.jsx";
 
 function HomePage() {
+  // console.log(data[0].category.$oid);
   return (
     <div>
       <div>
@@ -11,7 +15,48 @@ function HomePage() {
 
       <div className="space-y-10 py-20 mt-5 bg-gray-50">
         <h3 className="italic text-center">Featured Products</h3>
-        {/* <HomeSectionCarsousal /> */}
+        <h3 className="italic">Women Shirts</h3>
+        <div className="flex justify-center space-x-5">
+          {data
+            .filter((item) => item.category.$oid === "672173df839b69f713d02d8d")
+            .slice(0, 5)
+            .map((item) => (
+              <HomeSectionCardMen key={item.id} item={item} />
+            ))}
+        </div>
+        <h3 className="italic">Women Dresses</h3>
+        <div className="flex justify-center space-x-5">
+          {data
+            .filter((item) => item.category.$oid === "67217443839b69f713d02d8e")
+            .slice(0, 5)
+            .map((item) => (
+              <HomeSectionCardMen key={item.id} item={item} />
+            ))}
+        </div>
+
+        <h3 className="italic">Men Jeans</h3>
+        <div className="flex justify-center space-x-5">
+          {data
+            .filter((item) => item.category.$oid === "6721772b839b69f713d02d8f")
+            .slice(0, 5)
+            .map((item) => (
+              <HomeSectionCardMen key={item.id} item={item} />
+            ))}
+        </div>
+
+        <h3 className="italic">Women Saree</h3>
+        <div className="flex justify-center space-x-5">
+          {data
+            .filter((item) => item.category.$oid === "6721793f839b69f713d02d90")
+            .slice(0, 5)
+            .map((item) => (
+              <HomeSectionCardMen key={item.id} item={item} />
+            ))}
+        </div>
+
+        {/* <HomeSectionCarsousal />
+        <h3 className="italic">Men Fashion</h3>
+        <HomeSectionCarsousal1 /> */}
       </div>
     </div>
   );

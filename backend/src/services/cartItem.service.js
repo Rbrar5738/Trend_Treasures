@@ -3,6 +3,7 @@ const userService = require("../services/user.service.js");
 
 // Create a new cart item
 async function createCartItem(cartItemData) {
+  console.log("here", cartItemData);
   const cartItem = new CartItem(cartItemData);
   cartItem.quantity = 1;
   cartItem.price = cartItem.product.price * cartItem.quantity;

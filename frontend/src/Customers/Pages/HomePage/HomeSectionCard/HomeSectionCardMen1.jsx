@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function HomeSectionCardMen({ item }) {
-  console.log("here", item);
+function HomeSectionCardMen1({ item }) {
+  // console.log("here", item.title);
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/products/${item._id.$oid}`)}
+      onClick={() => navigate(`/products/${item._id}`)}
       key={item._id}
       className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden h-[24rem] 2xl:w-[15rem] lg:w-[15rem] md:w-[16rem] mx-3 sm:w-[20rem] "
       style={{ boxShadow: "0 0 5px rgba(0,0,0,0.5)" }}
@@ -21,12 +21,10 @@ function HomeSectionCardMen({ item }) {
       <div className="p-4 ">
         <h3 className="text-lg font-medium text-gray-900">{item.title}</h3>
         <p className="mt-2 text-sm text-gray-500">{item.brand}</p>
-        <p className="mt-2 text-lg text-gray-800">
-          Price $: {item.discountedPrice}
-        </p>
+        <p className="mt-2 text-sm text-gray-500">$: {item.discountedPrice}</p>
       </div>
     </div>
   );
 }
 
-export default HomeSectionCardMen;
+export default HomeSectionCardMen1;

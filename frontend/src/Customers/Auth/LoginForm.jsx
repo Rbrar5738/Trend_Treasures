@@ -1,22 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { Grid, TextField, Button, InputAdornment, IconButton } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Import CSS for Toastify
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import React, { useEffect, useState } from "react";
+import {
+  Grid,
+  TextField,
+  Button,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import CSS for Toastify
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import { getuser, login } from '../../State/Auth/Action';
+import { getuser, login } from "../../State/Auth/Action";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { auth } = useSelector((store) => store);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const handleClickShowPassword = () => {
     setShowPassword((prev) => !prev);
@@ -26,23 +32,23 @@ const LoginForm = () => {
     event.preventDefault();
 
     const formdata = new FormData(event.currentTarget);
-    const email = formdata.get('email');
-    const password = formdata.get('password');
+    const email = formdata.get("email");
+    const password = formdata.get("password");
 
     let hasError = false;
 
     if (!email) {
-      setEmailError('Email is required');
+      setEmailError("Email is required");
       hasError = true;
     } else {
-      setEmailError('');
+      setEmailError("");
     }
 
     if (!password) {
-      setPasswordError('Password is required');
+      setPasswordError("Password is required");
       hasError = true;
     } else {
-      setPasswordError('');
+      setPasswordError("");
     }
 
     if (hasError) {
@@ -62,36 +68,39 @@ const LoginForm = () => {
       dispatch(getuser(auth.jwt));
     }
   }, [auth.jwt]);
+  console.log(auth);
 
   useEffect(() => {
     if (auth.error) {
       toast.error(auth.error, {
-        position: 'top-right',
+        position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'colored',
+        theme: "colored",
       });
     }
   }, [auth.error]);
 
   return (
     <div>
-      <ToastContainer  limit={1}/>
-      <h2 className="text-2xl text-center font-bold mb-5 bg-gray-200 p-2">Login Form</h2>
+      <ToastContainer limit={1} />
+      <h2 className="text-2xl text-center font-bold mb-5 bg-gray-200 p-2">
+        Login Form
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
-              id='email'
-              name='email'
-              label='Email'
+              id="email"
+              name="email"
+              label="Email"
               fullWidth
-              autoComplete='email'
+              autoComplete="email"
               error={!!emailError}
               helperText={emailError}
             />
@@ -99,12 +108,12 @@ const LoginForm = () => {
 
           <Grid item xs={12}>
             <TextField
-              id='password'
-              name='password'
-              label='Password'
+              id="password"
+              name="password"
+              label="Password"
               fullWidth
-              type={showPassword ? 'text' : 'password'} // toggle between text and password
-              autoComplete='new-password' // better practice for new password fields
+              type={showPassword ? "text" : "password"} // toggle between text and password
+              autoComplete="new-password" // better practice for new password fields
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -125,10 +134,10 @@ const LoginForm = () => {
 
           <Grid item xs={12}>
             <Button
-              className='bg-{#9155FD] w-full'
+              className="bg-{#9155FD] w-full"
               type="submit"
-              variant='contained'
-              size='large'
+              variant="contained"
+              size="large"
               sx={{ padding: "1rem 0" }}
             >
               Login
@@ -139,11 +148,18 @@ const LoginForm = () => {
 
       <div className="flex justify-center items-center flex-col">
         <div className="py-4 flex justify-center">
-          <p>Don't have an account?
-            <Button onClick={() => { navigate("/register") }}
+          <p>
+            Don't have an account?
+            <Button
+              onClick={() => {
+                navigate("/register");
+              }}
               className='="ml-6'
               size="small"
-            >Register</Button></p>
+            >
+              Register
+            </Button>
+          </p>
         </div>
       </div>
     </div>

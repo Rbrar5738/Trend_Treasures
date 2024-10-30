@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
   name: {
@@ -8,7 +8,7 @@ const categorySchema = new mongoose.Schema({
   },
   parentCategory: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'categories',
+    ref: "categories",
   },
   level: {
     type: Number,
@@ -16,6 +16,6 @@ const categorySchema = new mongoose.Schema({
   },
 });
 
-const Category = mongoose.model('categories', categorySchema);
+const Category = mongoose.model("categories", categorySchema);
 
 module.exports = Category;

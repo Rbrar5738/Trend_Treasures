@@ -13,7 +13,7 @@ function Footer() {
         }}
       >
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={3}>
+          {/* <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6" className="pb-3 text-left">
               Contact
             </Typography>
@@ -52,7 +52,7 @@ function Footer() {
 
             <p className="text-left opacity-80 cursor-pointer">About Us</p>
             <p className="text-left opacity-80 cursor-pointer">Contact Us</p>
-          </Grid>
+          </Grid> */}
 
           <Grid className="text-center pt-20" item xs={12}>
             <Typography variant="body2" className="pb-3">

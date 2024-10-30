@@ -52,7 +52,7 @@ export default function ProductDetails() {
       setSelectedSize(customersProduct.product?.sizes[0]);
     }
   }, [customersProduct.product?.sizes]);
-
+  console.log("here", customersProduct);
   return (
     <div className="bg-white">
       <div className="pt-6">

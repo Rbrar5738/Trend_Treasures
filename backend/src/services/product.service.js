@@ -99,8 +99,9 @@ async function updateProduct(productId, reqData) {
 
 // Find a product by ID
 async function findProductById(id) {
+  // console.log("here", id);
   const product = await Product.findById(id).populate("category").exec();
-
+  // console.log("product", product);
   if (!product) {
     throw new Error("Product not found with id " + id);
   }

@@ -26,19 +26,20 @@ const login = async (req, res) => {
     if (!user) {
       return res
         .status(404)
-        .json({ message: "User not found With Email ", email });
+        .send({ message: "User not found With Email ", email });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid password" });
+      return res.status(401).json({ error: "Invalid password" });
     }
 
     const jwt = jwtProvider.generateToken(user._id);
 
-    return res.status(200).send({ jwt, message: "login success" });
+    return res.status(200).send({ jwt, error: "login success" });
   } catch (error) {
+    // console.log("here", error.message);
     return res.status(500).send({ error: error.message });
   }
 };
