@@ -14,7 +14,7 @@ function Navbar() {
       {/* Navigation bar */}
       <nav className="bg-blue-700 text-white border-b border-gray-200 lg:px-20 p-20">
         <div className="mx-auto p-20 ">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center ">
             {/* Logo */}
             <Link to="/" className="flex items-center py-6">
               <img
@@ -34,7 +34,7 @@ function Navbar() {
               <li>
                 <Link
                   to="/men"
-                  className="font-medium text-white hover:text-black"
+                  className="font-medium text-white hover:text-black hover:text-bold hoverhover:"
                 >
                   Men
                 </Link>

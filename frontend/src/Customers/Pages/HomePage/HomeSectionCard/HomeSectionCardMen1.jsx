@@ -8,7 +8,7 @@ function HomeSectionCardMen1({ item }) {
     <div
       onClick={() => navigate(`/products/${item._id}`)}
       key={item._id}
-      className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden h-[24rem] 2xl:w-[15rem] lg:w-[15rem] md:w-[16rem] mx-3 sm:w-[20rem] "
+      className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden h-[28rem] 2xl:w-[15rem] lg:w-[15rem] md:w-[16rem] mx-3 sm:w-[20rem] "
       style={{ boxShadow: "0 0 5px rgba(0,0,0,0.5)" }}
     >
       <div className="h-[13rem] w-[10rem] overfloew-hidden">

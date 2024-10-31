@@ -52,7 +52,7 @@ export default function ProductDetails() {
       setSelectedSize(customersProduct.product?.sizes[0]);
     }
   }, [customersProduct.product?.sizes]);
-  console.log("here", customersProduct);
+  // console.log("here", customersProduct);
   return (
     <div className="bg-white">
       <div className="pt-6">
@@ -84,17 +84,17 @@ export default function ProductDetails() {
               </li>
             ))} */}
             <li className="text-sm">
-              <a
+              <h3
                 // href={product.href}
                 aria-current="page"
-                className="font-medium text-gray-500 hover:text-gray-600"
+                className="text-3xl text-blue-900 hover:text-blue-800 decoration-none uppercase font-bold text-shadow-sm"
               >
                 {customersProduct.product?.title}
-              </a>
+              </h3>
             </li>
           </ol>
         </nav>
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-10 px-4 ">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-10 px-4 bg-gray-100 p-10 mb-10 shadow-xl">
           {/* Image gallery */}
           <div className="flex flex-col items-center">
             <div className="overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem] mainImage">
@@ -120,10 +120,10 @@ export default function ProductDetails() {
           {/* Product info */}
           <div className="lg:col-span-1 max-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24">
             <div className="lg:col-span-2">
-              <h1 className="text-lg lg:text-xl font-semibold text-gray-900">
+              <h1 className="text-xl lg:text-xl font-semibold text-blue-900">
                 {customersProduct.product?.brand}
               </h1>
-              <h1 className="text-lg lg:text-xl text-gray-900 opacity-70 pt-1">
+              <h1 className="text-xl lg:text-xl text-blue-900 opacity-70 pt-1">
                 {customersProduct.product?.title}
               </h1>
             </div>
@@ -235,7 +235,7 @@ export default function ProductDetails() {
               {/* Description and details */}
               <div>
                 <h3 className="sr-only">Description</h3>
-                <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                <h2 className="text-xl font-medium text-blue-900">Details</h2>
 
                 <div className="space-y-6">
                   <p className="text-base text-gray-900 text-justify">

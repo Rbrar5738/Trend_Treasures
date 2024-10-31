@@ -17,19 +17,19 @@ function HomePage() {
         <h3 className="italic text-center p-5 bg-gray-200 shadow-md font-bold text-5xl text-blue-900">
           FEATURED PRODUCTS
         </h3>
-        <h3 className="italic text-blue-900 font-bold">Women Shirts</h3>
+        <h3 className="italic text-blue-900 font-bold ">Women Dresses</h3>
         <div className="flex justify-center space-x-5 bg-gray-200 p-4 shadow-xl">
           {data
-            .filter((item) => item.category.$oid === "672173df839b69f713d02d8d")
+            .filter((item) => item.category.$oid === "67217443839b69f713d02d8e")
             .slice(0, 5)
             .map((item) => (
               <HomeSectionCardMen key={item.id} item={item} />
             ))}
         </div>
-        <h3 className="italic text-blue-900 font-bold ">Women Dresses</h3>
+        <h3 className="italic text-blue-900 font-bold">Men Shirts</h3>
         <div className="flex justify-center space-x-5 bg-gray-200 p-4 shadow-xl">
           {data
-            .filter((item) => item.category.$oid === "67217443839b69f713d02d8e")
+            .filter((item) => item.category.$oid === "672173df839b69f713d02d8d")
             .slice(0, 5)
             .map((item) => (
               <HomeSectionCardMen key={item.id} item={item} />
