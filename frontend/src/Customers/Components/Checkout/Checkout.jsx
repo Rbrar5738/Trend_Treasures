@@ -9,10 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import DeliveryAddressForm from "./DeliveryAddressForm";
 import OrderSummary from "./OrderSummary";
 
-const steps = [
-  /*'Login', */ "Delivery Address",
-  /*"Order Summary",*/ "Payment",
-];
+const steps = ["Login", "Delivery Adress", "Order Summary", "Payment"];
 
 export default function Checkout() {
   const location = useLocation();
@@ -87,7 +84,7 @@ export default function Checkout() {
               </Button>
             </Box>
             <div className="mt-10 ml-3">
-              {initialStep == 2 ? <OrderSummary /> : <DeliveryAddressForm />}
+              {initialStep == 2 ? <DeliveryAddressForm /> : <OrderSummary />}
             </div>
           </React.Fragment>
         )}

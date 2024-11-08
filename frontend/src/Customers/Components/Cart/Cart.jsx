@@ -11,9 +11,9 @@ function Cart() {
   const { cart } = useSelector((store) => store);
   const [refresh, setRefresh] = useState(false); // Local state to trigger refresh
 
-  const handleCheckOut = () => {
-    navigate("/checkout");
-  };
+  // const handleCheckOut = () => {
+  //   navigate("/checkout");
+  // };
 
   const handleCartUpdate = () => {
     setRefresh((prev) => !prev); // Toggle state to trigger re-fetch
@@ -64,7 +64,7 @@ function Cart() {
               </div>
             </div>
             <Button
-              onClick={handleCheckOut}
+              onClick={() => navigate("/checkout?step=2")}
               color="secondary"
               variant="contained"
               className="w-full mt-5"
