@@ -82,9 +82,10 @@ const ProductsTable = () => {
   };
 
   const handleUpdateProduct = (productId) => {
-    navigate(`/update/${productId}`);
+    // /admin/update/:productId
+    navigate(`/admin/update/${productId}`);
   };
-  console.log(customersProduct);
+  // console.log(customersProduct);
   return (
     <Box width={"100%"}>
       <Card className="p-3">

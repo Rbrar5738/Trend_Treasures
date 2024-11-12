@@ -94,7 +94,7 @@ const UpdateProductForm = () => {
         sx={{ textAlign: "center" }}
         className="py-10 text-center "
       >
-        Add New Product
+        Update Product
       </Typography>
       <form
         onSubmit={handleSubmit}

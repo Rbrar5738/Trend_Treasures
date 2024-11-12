@@ -10,8 +10,12 @@ const AdminRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<AdminPannel />}></Route>
+        <Route
+          path="/admin/update/:productId"
+          element={<UpdateProductForm />}
+        ></Route>
+
         {/* <Route path="/demo" element={<DemoAdmin />}></Route> */}
-     
       </Routes>
     </div>
   );

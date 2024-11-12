@@ -167,13 +167,14 @@ export default function AdminPannel() {
               element={<CreateProductForm />}
             ></Route>
             <Route
-              path="/product/update/:productId"
+              path="/update/:productId"
               element={<UpdateProductForm />}
             ></Route>
             <Route path="/products" element={<ProductsTable />}></Route>
             <Route path="/orders" element={<OrdersTable />}></Route>
             <Route path="/customers" element={<Customers />}></Route>
             <Route path="/demo" element={<DemoAdmin />}></Route>
+            {/* <Route path="/edit" element={<Admin />}></Route> */}
           </Routes>
         </Box>
       </Box>

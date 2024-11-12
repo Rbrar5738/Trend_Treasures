@@ -34,10 +34,10 @@ const CustomerRoutes = () => {
         <Route path="/login" element={<HomePage />} />
         <Route path="/register" element={<HomePage />} />
         <Route path="/account/order" element={<Order />} />
-        <Route
+        {/* <Route
           path="/update/:productId"
           element={<UpdateProductForm />}
-        ></Route>
+        ></Route> */}
       </Routes>
       <div>
         <Footer />
