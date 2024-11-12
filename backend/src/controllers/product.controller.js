@@ -28,7 +28,9 @@ async function deleteProduct(req, res) {
 async function updateProduct(req, res) {
   try {
     const productId = req.params.id;
+
     const product = await productService.updateProduct(productId, req.body);
+    console.log("here", product);
     return res.json(product);
   } catch (err) {
     res.status(500).json({ error: err.message });

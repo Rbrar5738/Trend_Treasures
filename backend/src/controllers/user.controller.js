@@ -18,6 +18,7 @@ const getUserProfile = async (req, res) => {
 };
 
 const getAllUsers = async (req, res) => {
+  console.log("here");
   try {
     const users = await userService.getAllUsers();
     return res.status(200).send(users);

@@ -1,0 +1,388 @@
+[
+  {
+    "_id": "657033b57f20b65ee3e5a042",
+    "title": "women Printed Pure Cotton Straight Kurta",
+    "description": "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+    "price": 140,
+    "discountedPrice": 70,
+    "discountPersent": 50,
+    "quantity": 100,
+    "brand": "Celine men",
+    "color": "black",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "657033b57f20b65ee3e5a043"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "657033b57f20b65ee3e5a044"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "657033b57f20b65ee3e5a045"
+      }
+    ],
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbwxq-IcENTo1qAKW7poCjTLoj6g0RP0wjXQ&usqp=CAU",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "6643ff7c83f13df74576e18b",
+    "createdAt": "2023-12-06T08:41:25.891Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "658db99ce2fcd68ca38e9033",
+    "title": "Women Printed Pure Cotton Straight Kurta",
+    "description": "A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style.",
+    "price": 60,
+    "discountedPrice": 40,
+    "quantity": 100,
+    "discountPersent": 33,
+    "brand": "Celine",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "658db99ce2fcd68ca38e9034"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "658db99ce2fcd68ca38e9035"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "658db99ce2fcd68ca38e9036"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/l1v1uvk0/dress/g/l/k/xl-maxi-11-fabflee-original-imagdc44wsqjz47b.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "6643ff7c83f13df74576e18b",
+    "createdAt": "2023-12-28T18:08:28.515Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "65dd76c08c079a257b5a0ea9",
+    "title": "Men Slim Fit Solid Spread Collar Casual Shirt",
+    "description": "Introducing sophistication with a contemporary edge, our men's slim fit solid spread collar casual shirt is crafted for the modern gentleman. Tailored to perfection, its slim fit silhouette ensures a sleek and refined look while providing all-day comfort. The solid color design offers versatility for various occasions, seamlessly transitioning from casual outings to semi-formal events. The spread collar adds a touch of elegance, making it a timeless addition to your wardrobe. Constructed from high-quality fabric, this shirt promises durability and breathability, ensuring you stay comfortable throughout the day. Pair it with jeans for a relaxed yet polished look or dress it up with chinos for a more refined ensemble. Elevate your style with this essential staple that effortlessly blends comfort and sophistication.",
+    "price": 100,
+    "discountedPrice": 70,
+    "discountPersent": 30,
+    "quantity": 100,
+    "brand": "PETER ENLAND",
+    "color": "black",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "65dd76c08c079a257b5a0eaa"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "65dd76c08c079a257b5a0eab"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "65dd76c08c079a257b5a0eac"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/k/q/a/s-c301-black-dennis-lingo-original-imagxgkqqahvpjej.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64c3d318aea9ad8ae7382896",
+    "createdAt": "2024-02-27T05:44:32.208Z",
+    "__v": 0
+  },
+  {
+    "_id": "65dd7d104cc381e88f6a7dbc",
+    "title": "Men Regular Fit Striped Casual Shirt",
+    "description": "\nIntroducing our Men's Regular Fit Striped Casual Shirt, a classic staple with a modern twist. Crafted with care and attention to detail, this shirt seamlessly blends timeless style with everyday comfort.\n\nDesigned for a regular fit, our shirt offers a relaxed silhouette that provides ample room for movement while still maintaining a polished appearance. The subtle striped pattern adds a touch of sophistication to your ensemble, making it suitable for various occasions.\n\nCrafted from premium quality fabric, our shirt ensures exceptional comfort and durability, keeping you looking and feeling your best throughout the day. Whether you're running errands or meeting friends for lunch, this shirt promises effortless style and versatility.\n\nThe classic collar design adds a refined touch to the shirt, offering a timeless look that never goes out of style. Pair it with jeans for a casual outing or dress it up with chinos for a more polished ensemble.\n\nElevate your casual wardrobe with our Men's Regular Fit Striped Casual Shirt and experience the perfect balance of style and comfort. Versatile, stylish, and effortlessly chic, it's a must-have addition to any modern man's collection",
+    "price": 50,
+    "discountedPrice": 40,
+    "discountPersent": 20,
+    "quantity": 100,
+    "brand": "URBAN FASHION",
+    "color": "white",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "65dd7d104cc381e88f6a7dbd"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "65dd7d104cc381e88f6a7dbe"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "65dd7d104cc381e88f6a7dbf"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/j/a/0/39-comsh612ck08264-r7-cavallo-by-linen-club-original-imagskw6jzxzmn8f.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64c3d318aea9ad8ae7382896",
+    "createdAt": "2024-02-27T06:11:28.340Z",
+    "__v": 0
+  },
+  {
+    "_id": "65dd8554da08e42a636e807a",
+    "title": "Men Regular Fit Solid Mandarin Collar Casual Shirt",
+    "description": "\nIntroducing our men's regular fit solid mandarin collar casual shirt, a timeless piece that effortlessly blends comfort and style. Designed for everyday wear, this shirt offers a relaxed and comfortable fit, making it perfect for a variety of occasions. The solid color design adds a touch of versatility, allowing for easy pairing with your favorite bottoms. The mandarin collar lends a subtle yet sophisticated look to your ensemble, providing a modern twist on a classic style. Crafted from high-quality fabric, this shirt ensures durability and breathability, keeping you cool and comfortable throughout the day. Whether worn casually with jeans or dressed up with trousers, this versatile shirt is sure to become a wardrobe staple. Embrace understated elegance and comfort with this essential addition to your collection.",
+    "price": 100,
+    "discountedPrice": 80,
+    "discountPersent": 20,
+    "quantity": 100,
+    "brand": "ROADSTER",
+    "color": "black",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "65dd8554da08e42a636e807b"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "65dd8554da08e42a636e807c"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "65dd8554da08e42a636e807d"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/5/g/l/38-2284691-roadster-original-imafwyfyanrz7zec-bb.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64c3d318aea9ad8ae7382896",
+    "createdAt": "2024-02-27T06:46:44.201Z",
+    "__v": 0
+  },
+  {
+    "_id": "65f3ce6671cde620424b307c",
+    "title": "Men Regular Fit Solid Spread Collar Casual Shirt",
+    "description": "Introducing our men's regular fit solid mandarin collar casual shirt, a timeless piece that effortlessly blends comfort and style. Designed for everyday wear, this shirt offers a relaxed and comfortable fit, making it perfect for a variety of occasions. The solid color design adds a touch of versatility, allowing for easy pairing with your favorite bottoms. The mandarin collar lends a subtle yet sophisticated look to your ensemble, providing a modern twist on a classic style. Crafted from high-quality fabric, this shirt ensures durability and breathability, keeping you cool and comfortable throughout the day. Whether worn casually with jeans or dressed up with trousers, this versatile shirt is sure to become a wardrobe staple. Embrace understated elegance and comfort with this essential addition to your collection",
+    "price": 50,
+    "discountedPrice": 45,
+    "discountPersent": 10,
+    "quantity": 100,
+    "brand": "METRONAUT ",
+    "color": "margenta",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 1,
+        "_id": "65f3ce6671cde620424b307d"
+      },
+      {
+        "name": "M",
+        "quantity": 1,
+        "_id": "65f3ce6671cde620424b307e"
+      },
+      {
+        "name": "L",
+        "quantity": 1,
+        "_id": "65f3ce6671cde620424b307f"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/b/4/l/l-frml-st2-vebnor-original-imagqwy4whxwz2dg.jpeg?q=70&crop=false",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64b78b87bbe498cb23c8ede5",
+    "createdAt": "2024-03-15T04:28:22.995Z",
+    "__v": 0
+  },
+  {
+    "_id": "661e649e66c5f1cf96424464",
+    "title": "Men Slim Fit Checkered Cut Away Collar Casual Shirt",
+    "description": "Introducing our men's slim fit checkered cutaway collar casual shirt, where style meets sophistication with every stitch. Tailored to perfection, this shirt offers a slim and sleek silhouette that exudes confidence and charm. The classic checkered pattern adds a timeless touch of elegance, making it suitable for a range of occasions. The distinctive cutaway collar elevates the shirt's aesthetic, adding a modern edge to your ensemble. Crafted from premium-quality fabric, it ensures durability and comfort, keeping you looking and feeling your best all day long. Whether paired with jeans for a casual outing or dressed up with trousers for a more polished look, this versatile shirt effortlessly combines style and versatility. Elevate your wardrobe with this essential staple that exudes refined sophistication.",
+    "price": 90,
+    "discountedPrice": 45,
+    "discountPersent": 50,
+    "quantity": 100,
+    "brand": "EL SENOR",
+    "color": "white",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "661e649e66c5f1cf96424465"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "661e649e66c5f1cf96424466"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "661e649e66c5f1cf96424467"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/e/g/u/40-asaeosh1029-arrow-sports-original-imagymyvkbgeafw7.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64b78b87bbe498cb23c8ede5",
+    "createdAt": "2024-04-16T11:44:30.367Z",
+    "__v": 0
+  },
+  {
+    "_id": "661e64a266c5f1cf9642447c",
+    "title": "Men Slim Fit Solid Mandarin Collar Casual Shirt",
+    "description": "Introducing our Men's Slim Fit Solid Mandarin Collar Casual Shirt, where contemporary style meets timeless elegance. Crafted with precision and attention to detail, this shirt is designed to elevate your casual ensemble with a touch of sophistication.\n\nCut to perfection, our slim fit silhouette offers a modern and tailored look that flatters your physique while ensuring comfort and ease of movement. The solid color design exudes understated charm, making it a versatile wardrobe staple for any occasion.\n\nCrafted from high-quality fabric, our shirt provides exceptional comfort and durability, ensuring you look and feel your best throughout the day. Whether you're at work, out for brunch, or enjoying a night out, this shirt offers effortless style and comfort.",
+    "price": 60,
+    "discountedPrice": 20,
+    "discountPersent": 66,
+    "quantity": 100,
+    "brand": "PETER ENGLAND",
+    "color": "maroon",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "661e64a266c5f1cf9642447d"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "661e64a266c5f1cf9642447e"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "661e64a266c5f1cf9642447f"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/kx3l0nk0/shirt/x/a/w/xl-sksh-logo-maroon-fubar-original-imag9mreapvw6zsg.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64b78b87bbe498cb23c8ede5",
+    "createdAt": "2024-04-16T11:44:34.194Z",
+    "__v": 0
+  },
+  {
+    "_id": "661e64a366c5f1cf96424484",
+    "title": "Men Slim Fit Solid Casual Shirt",
+    "description": "Introducing our Men's Slim Fit Solid Casual Shirt, where contemporary style meets unmatched comfort. Crafted with precision and attention to detail, this shirt is the epitome of versatility, seamlessly transitioning from casual outings to more formal settings with ease.\n\nDesigned for the modern man, this shirt boasts a slim fit silhouette that accentuates your physique while allowing for effortless movement. The solid color adds a timeless charm to your ensemble, making it a staple piece in your wardrobe.\n\nCrafted from premium quality fabric, our shirt ensures exceptional comfort throughout the day. Whether you're navigating through a busy workday or enjoying a leisurely weekend, you'll stay cool and comfortable in every situation.",
+    "price": 80,
+    "discountedPrice": 64,
+    "discountPersent": 16,
+    "quantity": 100,
+    "brand": "SPYKAR",
+    "color": "pink",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "661e64a366c5f1cf96424485"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "661e64a366c5f1cf96424486"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "661e64a366c5f1cf96424487"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/j/j/p/3xl-mshss1bc052-spykar-original-imaghktfzwsrtqgx.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64b78b87bbe498cb23c8ede5",
+    "createdAt": "2024-04-16T11:44:35.991Z",
+    "__v": 0
+  },
+  {
+    "_id": "661e64a766c5f1cf9642449c",
+    "title": "Men Regular Fit Checkered Spread Collar Casual Shirt",
+    "description": "\nIntroducing the epitome of timeless casual elegance: this men's regular fit checkered spread collar casual shirt. Designed for comfort and style, this shirt offers a relaxed yet tailored fit that ensures effortless sophistication. The classic checkered pattern adds a touch of traditional charm to your ensemble, perfect for both laid-back weekends and casual office settings. The spread collar lends a refined touch, making it versatile for various occasions. Crafted from high-quality fabric, it promises durability and breathability, ensuring all-day comfort. Pair it with jeans for a relaxed look or dress it up with chinos for a more polished appearance. Elevate your wardrobe with this essential staple that seamlessly blends comfort and style.",
+    "price": 42,
+    "discountedPrice": 21,
+    "discountPersent": 50,
+    "quantity": 100,
+    "brand": "BK BRAND",
+    "color": "blue",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "661e64a766c5f1cf9642449d"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "661e64a766c5f1cf9642449e"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "661e64a766c5f1cf9642449f"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/b/q/n/s-vsh01ptch013-veirdo-original-imagjqafb8y95zq9.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64c3d318aea9ad8ae7382896",
+    "createdAt": "2024-04-16T11:44:39.834Z",
+    "__v": 0
+  },
+  {
+    "_id": "661e64a966c5f1cf964244a4",
+    "title": "Men Regular Fit Solid Casual Shirt\n",
+    "description": "\nIntroducing our men's regular fit solid casual shirt, a timeless essential for your everyday wardrobe. Tailored for comfort and versatility, this shirt offers a relaxed fit that's perfect for any occasion. The solid color design provides a classic and understated look, making it effortless to pair with jeans, chinos, or shorts. Crafted from high-quality fabric, this shirt ensures durability and breathability, keeping you comfortable throughout the day. Whether you're running errands, meeting friends, or simply relaxing at home, this versatile shirt is a reliable choice. Embrace effortless style and comfort with this essential addition to your collection.",
+    "price": 40,
+    "discountedPrice": 30,
+    "discountPersent": 25,
+    "quantity": 100,
+    "brand": "THE INDIAN STORE",
+    "color": "black",
+    "sizes": [
+      {
+        "name": "S",
+        "quantity": 20,
+        "_id": "661e64a966c5f1cf964244a5"
+      },
+      {
+        "name": "M",
+        "quantity": 30,
+        "_id": "661e64a966c5f1cf964244a6"
+      },
+      {
+        "name": "L",
+        "quantity": 50,
+        "_id": "661e64a966c5f1cf964244a7"
+      }
+    ],
+    "imageUrl": "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/t/r/t/-original-imagt3z57akgvw26.jpeg?q=70",
+    "ratings": [],
+    "reviews": [],
+    "numRatings": 0,
+    "category": "64b78b87bbe498cb23c8ede5",
+    "createdAt": "2024-04-16T11:44:41.164Z",
+    "__v": 0
+  }
+]

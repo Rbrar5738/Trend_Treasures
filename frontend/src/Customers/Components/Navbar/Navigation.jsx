@@ -70,6 +70,12 @@ export default function Navigation() {
     ) {
       navigate(-1);
     }
+    if (
+      auth.user?.role === "ADMIN" &&
+      (location.pathname === "/login" || location.pathname === "/register")
+    ) {
+      navigate("/admin");
+    }
   }, [auth.user]);
 
   const handleLogout = () => {

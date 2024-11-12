@@ -7,6 +7,7 @@ import { getuser } from "./State/Auth/Action";
 import { useEffect } from "react";
 import Checkout from "./Customers/Components/Checkout/Checkout";
 import Order from "./Customers/Components/Order/Order";
+import AdminPannel from './Admin/AdminPannel';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,10 +18,12 @@ function App() {
       dispatch(getuser(jwt));
     }
   }, [dispatch]);
+  const isAdmin=true;
   return (
     <>
       <Routes>
         <Route path="/*" element={<CustomerRoutes />} />
+        <Route path="/admin/*" element={<AdminPannel />} />
       </Routes>
     </>
   );

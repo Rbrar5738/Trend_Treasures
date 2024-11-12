@@ -124,13 +124,13 @@ export const createProduct = (product) => async (dispatch) => {
   }
 };
 
-export const updateProduct = (product) => async (dispatch) => {
+export const updateProduct = (product, productData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PRODUCT_REQUEST });
-
+    // console.log("update product ", product);
     const { data } = await api.put(
-      `${API_BASE_URL}/api/admin/products/${product.productId}`,
-      product
+      `${API_BASE_URL}/api/admin/products/${product}`,
+      productData
     );
     console.log("update product ", data);
     dispatch({
