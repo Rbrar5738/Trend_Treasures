@@ -14,59 +14,59 @@ import CurrencyUsd from "mdi-material-ui/CurrencyUsd";
 import DotsVertical from "mdi-material-ui/DotsVertical";
 import CellphoneLink from "mdi-material-ui/CellphoneLink";
 import AccountOutline from "mdi-material-ui/AccountOutline";
+// import OrdersTable from "../components/Orders/OrdersTable";
+import { useDispatch, useSelector } from "react-redux";
 
-const salesData = [
-  {
-    stats: "245k",
-    title: "Sales",
-    color: "primary",
-    icon: <TrendingUp sx={{ fontSize: "1.75rem" }} />,
-  },
-  {
-    stats: "12.5k",
-    title: "Customers",
-    color: "success",
-    icon: <AccountOutline sx={{ fontSize: "1.75rem" }} />,
-  },
-  {
-    stats: "1.54k",
-    color: "warning",
-    title: "Products",
-    icon: <CellphoneLink sx={{ fontSize: "1.75rem" }} />,
-  },
-];
+import React, { useEffect, useState } from "react";
 
-const renderStats = () => {
-  return salesData.map((item, index) => (
-    <Grid item xs={12} sm={4} key={index}>
-      <Box key={index} sx={{ display: "flex", alignItems: "center" }}>
-        <Avatar
-          variant="rounded"
-          sx={{
-            mr: 3,
-            width: 44,
-            height: 44,
-            boxShadow: 3,
-            color: "common.white",
-            backgroundColor: `${item.color}.main`,
-          }}
-        >
-          {item.icon}
-        </Avatar>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography variant="caption">{item.title}</Typography>
-          <Typography variant="h6">{item.stats}</Typography>
-        </Box>
-      </Box>
-    </Grid>
-  ));
-};
+import { useNavigate } from "react-router-dom";
+import { getOrders } from "../../State/Admin/Orders/Action";
 
 const MonthlyOverview = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  const { adminsOrder } = useSelector((store) => store);
+  const { customersProduct } = useSelector((store) => store);
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalProducts, setTotalProducts] = useState(0);
+  useEffect(() => {
+    dispatch(getOrders({ jwt }));
+  }, [jwt, adminsOrder.delivered, adminsOrder.shipped, adminsOrder.confirmed]);
+  useEffect(() => {
+    // Recalculate totalItems whenever adminsOrder.orders changes
+    const newTotalItems =
+      adminsOrder?.orders?.reduce((acc, order) => {
+        return acc + order.orderItems.length;
+      }, 0) || 0;
+
+    setTotalItems(newTotalItems);
+  }, [adminsOrder.orders]);
+
+  const salesData = [
+    {
+      stats: totalItems.toString(),
+      title: "Total Orders",
+      color: "primary",
+      icon: <TrendingUp sx={{ fontSize: "1.75rem" }} />,
+    },
+    {
+      stats: "10",
+      title: "Total Customers",
+      color: "success",
+      icon: <AccountOutline sx={{ fontSize: "1.75rem" }} />,
+    },
+    {
+      stats: "42",
+      color: "warning",
+      title: "Total Products",
+      icon: <CellphoneLink sx={{ fontSize: "1.75rem" }} />,
+    },
+  ];
   return (
     <Card>
       <CardHeader
-        title="Monthly Overview"
+        title=" Overview"
         action={
           <IconButton
             size="small"
@@ -95,7 +95,29 @@ const MonthlyOverview = () => {
       />
       <CardContent sx={{ pt: (theme) => `${theme.spacing(3)} !important` }}>
         <Grid container spacing={[5, 0]}>
-          {renderStats()}
+          {salesData.map((item, index) => (
+            <Grid item xs={12} sm={4} key={index}>
+              <Box key={index} sx={{ display: "flex", alignItems: "center" }}>
+                <Avatar
+                  variant="rounded"
+                  sx={{
+                    mr: 3,
+                    width: 44,
+                    height: 44,
+                    boxShadow: 3,
+                    color: "common.white",
+                    backgroundColor: `${item.color}.main`,
+                  }}
+                >
+                  {item.icon}
+                </Avatar>
+                <Box sx={{ display: "flex", flexDirection: "column" }}>
+                  <Typography variant="caption">{item.title}</Typography>
+                  <Typography variant="h6">{item.stats}</Typography>
+                </Box>
+              </Box>
+            </Grid>
+          ))}
         </Grid>
       </CardContent>
     </Card>

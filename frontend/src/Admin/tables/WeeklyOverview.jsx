@@ -68,7 +68,7 @@ const WeeklyOverview = () => {
     xaxis: {
       categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       tickPlacement: "on",
-      labels: { show: false },
+      labels: { show: true },
       axisTicks: { show: false },
       axisBorder: { show: false },
     },
@@ -111,7 +111,7 @@ const WeeklyOverview = () => {
           type="bar"
           height={201}
           options={options}
-          series={[{ data: [37, 57, 45, 75, 57, 40, 65] }]}
+          series={[{ data: [200, 570, 450, 750, 570, 400, 655] }]}
         />
         <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
           <Typography variant="h5" sx={{ mr: 4 }}></Typography>

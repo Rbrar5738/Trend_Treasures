@@ -45,6 +45,7 @@ const OrdersTable = () => {
   const jwt = localStorage.getItem("jwt");
   const { adminsOrder } = useSelector((store) => store);
   const [anchorElArray, setAnchorElArray] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     dispatch(getOrders({ jwt }));
@@ -104,6 +105,18 @@ const OrdersTable = () => {
   // setUpdateOrderStatus(item.orderStatus==="PENDING"?"PENDING": item.orderStatus==="PLACED"?"CONFIRMED":item.orderStatus==="CONFIRMED"?"SHIPPED":"DELEVERED")
   //   },[adminsOrder.orders])
   // console.log(adminsOrder.orders);
+  useEffect(() => {
+    // Recalculate totalItems whenever adminsOrder.orders changes
+    const newTotalItems =
+      adminsOrder?.orders?.reduce((acc, order) => {
+        return acc + order.orderItems.length;
+      }, 0) || 0;
+
+    setTotalItems(newTotalItems);
+  }, [adminsOrder.orders]);
+  const getTotalItems = () => {
+    return totalItems;
+  };
 
   return (
     <Box>
@@ -314,6 +327,7 @@ const OrdersTable = () => {
         </TableContainer>
       </Card>
       <Card className="mt-2 felx justify-center items-center">
+        {/* <h1>{totalItems}</h1> */}
         {/* <Pagination
           className="py-5 w-auto"
           size="large"
@@ -327,3 +341,4 @@ const OrdersTable = () => {
 };
 
 export default OrdersTable;
+// export { getTotalItems };
