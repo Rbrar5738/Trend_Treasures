@@ -6,7 +6,7 @@ const cartService = require("../services/cart.service.js");
 const findUserCart = async (req, res) => {
   try {
     const user = req.user;
-    
+
     const cart = await cartService.findUserCart(user.id);
 
     res.status(200).json(cart);

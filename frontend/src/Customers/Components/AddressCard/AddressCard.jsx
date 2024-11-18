@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddressCard = ({ address }) => {
-  console.log("here", address);
+  // console.log("here", address);
   return (
     <div>
       <div className="space-y-3">

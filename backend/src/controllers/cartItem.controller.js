@@ -32,4 +32,17 @@ async function removeCartItem(req, res) {
   }
 }
 
-module.exports = { updateCartItem, removeCartItem };
+async function removeAllCartItems(req, res) {
+  const userId = req.user;
+  try {
+    // Remove all cart items associated with the given userId
+    const result = await cartItemService.removeAllCartItems(userId);
+
+    // Return result if necessary, like how many documents were deleted
+    return result;
+  } catch (err) {
+    throw new Error("Error removing all cart items: " + err.message);
+  }
+}
+
+module.exports = { updateCartItem, removeCartItem, removeAllCartItems };

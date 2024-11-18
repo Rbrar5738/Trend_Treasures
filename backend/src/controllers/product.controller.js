@@ -30,7 +30,7 @@ async function updateProduct(req, res) {
     const productId = req.params.id;
 
     const product = await productService.updateProduct(productId, req.body);
-    console.log("here", product);
+    // console.log("here", product);
     return res.json(product);
   } catch (err) {
     res.status(500).json({ error: err.message });

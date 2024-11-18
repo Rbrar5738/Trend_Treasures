@@ -3,7 +3,7 @@ const userService = require("../services/user.service.js");
 
 // Create a new cart item
 async function createCartItem(cartItemData) {
-  console.log("here", cartItemData);
+  // console.log("here", cartItemData);
   const cartItem = new CartItem(cartItemData);
   cartItem.quantity = 1;
   cartItem.price = cartItem.product.price * cartItem.quantity;
@@ -72,10 +72,29 @@ async function findCartItemById(cartItemId) {
   }
 }
 
+async function removeAllCartItems(userId) {
+  try {
+    // Find all cart items belonging to the given user
+    const cartItems = await CartItem.find({ userId });
+
+    if (cartItems.length === 0) {
+      throw new Error("No cart items found for the user.");
+    }
+
+    // Remove all cart items associated with the user
+    await CartItem.deleteMany({ userId });
+
+    return { message: "All cart items removed successfully." };
+  } catch (err) {
+    throw new Error("Error removing all cart items: " + err.message);
+  }
+}
+
 module.exports = {
   createCartItem,
   updateCartItem,
   isCartItemExist,
   removeCartItem,
   findCartItemById,
+  removeAllCartItems,
 };

@@ -12,6 +12,9 @@ import {
   UPDATE_CART_ITEM_REQUEST,
   UPDATE_CART_ITEM_SUCCESS,
   CLEAR_CART,
+  REMOVE_ALL_CART_ITEMS_REQUEST,
+  REMOVE_ALL_CART_ITEMS_SUCCESS,
+  REMOVE_ALL_CART_ITEMS_FAILURE,
 } from "./ActionType";
 
 const initialState = {
@@ -80,6 +83,23 @@ const cartReducer = (state = initialState, action) => {
         error: action.payload,
         loading: false,
       };
+    case REMOVE_ALL_CART_ITEMS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case REMOVE_ALL_CART_ITEMS_SUCCESS:
+      return {
+        ...state,
+        cartItems: [], // Clear all cart items
+        loading: false,
+      };
+    case REMOVE_ALL_CART_ITEMS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
     case CLEAR_CART:
       return {
         ...state,
@@ -87,6 +107,7 @@ const cartReducer = (state = initialState, action) => {
         cartItems: [],
         loading: false,
       };
+
     default:
       return state;
   }

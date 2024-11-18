@@ -28,6 +28,9 @@ app.use("/api/cart", cartRouter);
 const cartItemRouter = require("./routes/cartItem.routes.js");
 app.use("/api/cart_items", cartItemRouter);
 
+const cartItemRouterRemove = require("./routes/cartItem.routesremove.js");
+app.use("/api/remove", cartItemRouterRemove);
+
 const orderRouter = require("./routes/order.routes.js");
 app.use("/api/orders", orderRouter);
 
@@ -43,5 +46,9 @@ app.use("/api/ratings", ratingRouter);
 // admin routes handler
 const adminOrderRoutes = require("./routes/adminOrder.routes.js");
 app.use("/api/admin/orders", adminOrderRoutes);
+
+const paypalRoutes = require("./routes/paypal.js");
+
+app.use("/paypal", paypalRoutes);
 
 module.exports = { app };

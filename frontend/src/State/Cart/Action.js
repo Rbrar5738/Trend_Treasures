@@ -14,6 +14,10 @@ import {
   UPDATE_CART_ITEM_FAILURE,
   UPDATE_CART_ITEM_REQUEST,
   UPDATE_CART_ITEM_SUCCESS,
+  CLEAR_CART,
+  REMOVE_ALL_CART_ITEMS_REQUEST,
+  REMOVE_ALL_CART_ITEMS_SUCCESS,
+  REMOVE_ALL_CART_ITEMS_FAILURE,
 } from "./ActionType";
 
 export const addItemToCart = (reqData) => async (dispatch) => {
@@ -124,6 +128,46 @@ export const updateCartItem = (reqData) => async (dispatch) => {
     console.log(error.message);
     dispatch({
       type: UPDATE_CART_ITEM_FAILURE,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// Clear Cart Action
+export const clearCart = () => ({
+  type: CLEAR_CART,
+});
+
+export const removeAllItems = () => async (dispatch) => {
+  console.log("Removeeeeeed");
+  const jwt = localStorage.getItem("jwt");
+  try {
+    dispatch({ type: REMOVE_ALL_CART_ITEMS_REQUEST });
+    const config = {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    // Make the API call to remove all items from the cart
+    await api.delete(`${API_BASE_URL}/api/remove/removeall`, config);
+  
+
+    // Dispatch success action
+    dispatch({
+      type: REMOVE_ALL_CART_ITEMS_SUCCESS,
+    });
+
+    // Optionally, fetch the updated cart after removing all items
+    dispatch(getCart()); // To refresh the cart details
+  } catch (error) {
+    // Dispatch failure action if there's an error
+    dispatch({
+      type: REMOVE_ALL_CART_ITEMS_FAILURE,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

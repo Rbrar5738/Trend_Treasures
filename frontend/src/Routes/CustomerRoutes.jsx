@@ -12,6 +12,7 @@ import Navigation from "../Customers/Components/Navbar/Navigation";
 import LoginForm from "../Customers/Auth/LoginForm";
 import Order from "../Customers/Components/Order/Order";
 import UpdateProductForm from "../Admin/componets/updateProduct/UpdateProduct.jsx";
+import PaymentSuccess from "../Customers/Components/paymentSuccess/PaymentSuccess.jsx";
 
 const CustomerRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const CustomerRoutes = () => {
         <Route path="/login" element={<HomePage />} />
         <Route path="/register" element={<HomePage />} />
         <Route path="/account/order" element={<Order />} />
+        <Route path="/paymentsuccess/:orderId" element={<PaymentSuccess />}></Route>
         {/* <Route
           path="/update/:productId"
           element={<UpdateProductForm />}
