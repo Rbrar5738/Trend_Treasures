@@ -116,9 +116,9 @@ const WeeklyOverview = () => {
         <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
           <Typography variant="h5" sx={{ mr: 4 }}></Typography>
         </Box>
-        <Button fullWidth variant="contained">
+        {/* <Button fullWidth variant="contained">
           Details
-        </Button>
+        </Button> */}
       </CardContent>
     </Card>
   );
