@@ -126,8 +126,8 @@ const NavigationData = {
     },
   ],
   pages: [
-    { name: "Company", id: "/" },
-    { name: "Stores", id: "/" },
+    { name: "About Us", id: "about" },
+    { name: "Contact Us", id: "contact" },
   ],
 };
 export default NavigationData;

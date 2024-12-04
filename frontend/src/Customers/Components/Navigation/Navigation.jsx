@@ -506,13 +506,18 @@ export default function Navigation() {
                       Sign in | Register
                     </Button>
                   )}
+                   <Button
+                    onClick={handleOpen}
+                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    About Us
+                  </Button>
                   <span aria-hidden="true" className="h-6 w-px bg-gray-200" />
                   {/* <Button
-                     onClick={handleOpen}
-                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                    >
-                      
-                  
+                    onClick={handleOpen}
+                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    About Us
                   </Button> */}
                 </div>
                 {/* Search */}

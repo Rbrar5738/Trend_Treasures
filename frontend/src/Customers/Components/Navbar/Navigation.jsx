@@ -90,6 +90,16 @@ export default function Navigation() {
   const handleGotoHome = () => {
     navigate("/");
   };
+  const handleAbout = () => {
+    navigate("/about");
+  };
+  const handleProfile = () => {
+    navigate("/profile");
+  };
+
+  const handleContact = () => {
+    navigate("/contact");
+  };
 
   return (
     <div className="bg-white pb-10">
@@ -423,6 +433,18 @@ export default function Navigation() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                  <Button
+                    onClick={handleAbout}
+                    className="text-sm font-medium text-gray-800 hover:text-gray-800"
+                  >
+                    About
+                  </Button>
+                  <Button
+                    onClick={handleContact}
+                    className="text-sm font-medium text-gray-800 hover:text-gray-800"
+                  >
+                    Contact
+                  </Button>
                   {auth.user ? (
                     <div>
                       <Avatar
@@ -458,9 +480,7 @@ export default function Navigation() {
                           "aria-labelledby": "basic-button",
                         }}
                       >
-                        <MenuItem onClick={handleCloseUserMenu}>
-                          Profile
-                        </MenuItem>
+                        <MenuItem onClick={handleProfile}>Profile</MenuItem>
 
                         <MenuItem onClick={handleMyOrderClick}>
                           My Orders
