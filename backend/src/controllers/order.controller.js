@@ -30,6 +30,7 @@ const orderHistory = async (req, res) => {
   const user = req.user;
   try {
     let order = await orderService.usersOrderHistory(user._id);
+    // console.log(order);
     return res.status(200).send(order);
   } catch (error) {
     return res.status(500).send(error.message);

@@ -1,52 +1,74 @@
-import React from "react";
-import Grid from "@mui/material/Grid";
-import { OrderCard } from "./OrderCard";
+import { Box, Grid, MenuItem, Select, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import OrderCard from "./OrderCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrderHistory } from "../../../State/Order/Action.jsx";
+import BackdropComponent from "../BackDrop/Backdrop";
 
-const orderStatus = [
-  { label: "On The Way", value: "On The Way" },
-  { label: "Delivered", value: "Delivered" },
-  { label: "Cancelled", value: "Cancelled" },
-  { label: "Returned", value: "Returned" },
-];
 const Order = () => {
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  const { order } = useSelector((store) => store);
+  const [filter, setFilter] = useState("ALL");
+
+  useEffect(() => {
+    dispatch(getOrderHistory({ jwt }));
+  }, [dispatch, jwt]);
+
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value);
+  };
+
+  const filteredOrders = order.orders?.filter((order) => {
+    if (filter === "ALL") return true;
+    return order.orderStatus === filter;
+  });
+
   return (
-    <div className="px-5 lg:px-20">
-      <Grid container sx={{ justifyContent: "space-between" }}>
+    <Box className="px-10">
+      <Grid container spacing={0} sx={{ justifyContent: "space-between" }}>
         <Grid item xs={2.5}>
-          <div className="h-auto shadow-md bg-white p-5 sticky top-5">
-            <h1 className="font-bold text-xl">Filter</h1>
-
-            <div className="space-y-4 mt-5">
-              <h1 className="font-semibold text-xl">Order Status</h1>
-
-              {orderStatus.map((option) => (
-                <div className="flex items-center" key={option.value}>
-                  <input
-                    defaultValue={option.value}
-                    type="checkbox"
-                    className="w-4 h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                    id={option.value} // Set a unique id
-                  />
-                  <label
-                    className="ml-3 text-sm text-gray-600"
-                    htmlFor={option.value}
-                  >
-                    {option.label}
-                  </label>
-                </div>
-              ))}
+          <div className="h-auto shadow-lg bg-white border p-5 sticky top-5">
+            <Typography variant="h6" className="font-bold text-lg">
+              Filters
+            </Typography>
+            <div className="space-y-4 mt-10">
+              <Typography variant="subtitle1" className="font-semibold">
+                ORDER STATUS
+              </Typography>
+              <Select
+                value={filter}
+                onChange={handleFilterChange}
+                displayEmpty
+                inputProps={{ "aria-label": "Order Filter" }}
+                fullWidth
+              >
+                <MenuItem value="ALL">All</MenuItem>
+                <MenuItem value="DELIVERED">Delivered</MenuItem>
+                <MenuItem value="SHIPPED">Shipped</MenuItem>
+                <MenuItem value="PLACED">Placed</MenuItem>
+                <MenuItem value="PENDING">Pending</MenuItem>
+              </Select>
             </div>
           </div>
         </Grid>
         <Grid item xs={9}>
-          <div className="space-y-10">
-            {[1, 1, 1, 1, 1, 1].map((items) => (
-              <OrderCard className="mb-10" key={items} />
-            ))}
-          </div>
+          <Box className="space-y-5">
+            {filteredOrders?.length > 0 ? (
+              filteredOrders.map((order) =>
+                order?.orderItems?.map((item) => (
+                  <OrderCard key={item._id} item={item} order={order} />
+                ))
+              )
+            ) : (
+              <Typography>No orders found</Typography>
+            )}
+          </Box>
         </Grid>
       </Grid>
-    </div>
+
+      <BackdropComponent open={order.loading} />
+    </Box>
   );
 };
 

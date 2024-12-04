@@ -1,70 +1,84 @@
-import React from "react";
-import Grid from "@mui/material/Grid";
-import ImageData from "./ImageData";
+import { Box, Grid, Typography } from "@mui/material";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import AdjustIcon from "@mui/icons-material/Adjust";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
 
-export const OrderCard = () => {
+const OrderCard = ({ item, order }) => {
+  const today = new Date();
+
+  // Calculate the date one week from today
+  const deliveryDate = new Date(today);
+  deliveryDate.setDate(today.getDate() + 7);
+
+  // Format the date as 'MMM DD'
+  const options = { month: "short", day: "2-digit" };
+  const formattedDeliveryDate = deliveryDate.toLocaleDateString(
+    "en-US",
+    options
+  );
+  const navigate = useNavigate();
+  // console.log("order ", order);
   return (
-    <div>
-      <Grid
-        container
-        spacing={2}
-        sx={{ justifyContent: "space-between" }}
-        className="p-5 border rounded-md shadow-md hover:shadow-xl cursor-pointer"
-      >
-        <Grid item xs={5}>
-          <div className="flex cursor-pointer">
+    <Box className="p-5 shadow-lg hover:shadow-2xl border ">
+      <Grid spacing={2} container sx={{ justifyContent: "space-between" }}>
+        <Grid item xs={6}>
+          <div
+            onClick={() => navigate(`/account/order/${order?._id}`)}
+            className="flex cursor-pointer"
+          >
             <img
               className="w-[5rem] h-[5rem] object-cover object-top"
-              src="https://image.hm.com/assets/hm/12/8f/128f930c87a22f7ab8e53a8ed90fa1485d2a90b7.jpg?imwidth=820"
-              alt="image1"
+              src={item?.product?.imageUrl}
+              alt=""
             />
-            <div className="ml-5 space-y-2">
-              <p className="opacity-90 font-semibold text-xl">
-                Women Black Dress
+            <div className="ml-5">
+              <p className="mb-2">{item?.product?.title}</p>
+              <p className="opacity-50 text-xs font-semibold space-x-5">
+                <span>Size: {item?.size}</span>
               </p>
-              <p className="opacity-70 font-semibold text-xs">Size: M</p>
-              <p className="opacity-70 font-semibold text-xs">Color: Black</p>
             </div>
           </div>
         </Grid>
 
         <Grid item xs={2}>
-          <p>$100</p>
+          <p>₹{item?.price}</p>
         </Grid>
-
-        <Grid item xs={5}>
-          {true && (
-            <div>
-              <p>
+        <Grid item xs={4}>
+          <p className="space-y-2 font-semibold">
+            {order?.orderStatus === "DELIVERED" ? (
+              <>
+                <FiberManualRecordIcon
+                  sx={{ width: "15px", height: "15px" }}
+                  className="text-green-600 p-0 mr-2 text-sm"
+                />
+                <span>Delivered</span>
+              </>
+            ) : (
+              <>
                 <AdjustIcon
                   sx={{ width: "15px", height: "15px" }}
-                  className="text-green-600 mr-2"
+                  className="text-green-600 p-0 mr-2 text-sm"
                 />
-                <span className="font-semibold">
-                  Delivered on October 10, 2024
-                </span>
-                <p className="text-xs opacity-70">
-                  Your item has been delivered
-                </p>
-              </p>
+                <span>Expected Delivery On {formattedDeliveryDate}</span>
+              </>
+            )}
+          </p>
+          <p className="text-xs">Your Item Has Been Delivered</p>
+          {item.orderStatus === "DELIVERED" && (
+            <div
+              onClick={() => navigate(`/account/rate/{id}`)}
+              className="flex items-center text-blue-600 cursor-pointer"
+            >
+              <StarIcon sx={{ fontSize: "2rem" }} className="px-2 text-5xl" />
+              <span>Rate & Review Product</span>
             </div>
-          )}
-
-          {false && (
-            <p>
-              {" "}
-              <AdjustIcon
-                sx={{ width: "15px", height: "15px" }}
-                className="text-green-600 mr-2"
-              />
-              <span className="font-semibold">
-                Expected delivery on October 10, 2024
-              </span>
-            </p>
           )}
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
+
+export default OrderCard;

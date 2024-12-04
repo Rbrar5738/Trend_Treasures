@@ -16,6 +16,8 @@ import PaymentSuccess from "../Customers/Components/paymentSuccess/PaymentSucces
 import Contactus from "../Customers/Components/Contactus.jsx";
 import Aboutus from "../Customers/Components/Aboutus.jsx";
 import Profile from "../Customers/Components/Profile/Profile.jsx";
+import OrderDetails from "../Customers/Components/Order/OrderDetails.jsx";
+// import OrderDetails from "../customer/Components/orders/OrderDetails";
 
 const CustomerRoutes = () => {
   return (
@@ -38,6 +40,7 @@ const CustomerRoutes = () => {
         <Route path="/login" element={<HomePage />} />
         <Route path="/register" element={<HomePage />} />
         <Route path="/account/order" element={<Order />} />
+        <Route path="/account/order/:orderId" element={<OrderDetails />}></Route>
         <Route path="/about" element={<Aboutus />} />
         <Route path="/contact" element={<Contactus />} />
         <Route path="/profile" element={<Profile />} />

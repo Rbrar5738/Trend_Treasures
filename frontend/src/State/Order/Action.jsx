@@ -10,8 +10,8 @@ import {
   GET_ORDER_HISTORY_REQUEST,
   GET_ORDER_HISTORY_SUCCESS,
 } from "./ActionType";
-
 import api, { API_BASE_URL } from "../../config/apiConfig";
+
 export const createOrder = (reqData) => async (dispatch) => {
   console.log("req data ", reqData);
   try {
@@ -81,9 +81,9 @@ export const getOrderHistory = (reqData) => async (dispatch, getState) => {
         Authorization: `Bearer ${reqData.jwt}`,
       },
     };
-
+    // console.log("here----", reqData.jwt);
     const { data } = await api.get(`/api/orders/user`);
-    console.log("order history -------- ", data);
+    // console.log("order history -------- ", data);
     dispatch({
       type: GET_ORDER_HISTORY_SUCCESS,
       payload: data,

@@ -43,9 +43,14 @@ async function createOrder(orderId) {
 async function capturePayment(orderId) {
   let request = new paypal.orders.OrdersCaptureRequest(orderId);
   request.requestBody({});
+  // console.log("capture payment orderId ", orderId);
 
   try {
     const capture = await client.execute(request);
+    // const order = await orderService.findOrderById(orderId);
+    // order.orderStatus = "PLACED";
+    // await order.save();
+
     // console.log(capture);
     return capture.result;
   } catch (err) {

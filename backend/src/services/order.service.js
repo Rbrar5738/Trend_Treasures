@@ -43,7 +43,7 @@ async function createOrder(user, shippAddress) {
     totalItem: cart.totalItem,
     shippingAddress: address,
     orderDate: new Date(),
-    orderStatus: "PENDING", // Assuming OrderStatus is a string enum or a valid string value
+    orderStatus: "PLACED", // Assuming OrderStatus is a string enum or a valid string value
     "paymentDetails.status": "PENDING", // Assuming PaymentStatus is nested under 'paymentDetails'
     createdAt: new Date(),
   });
@@ -92,17 +92,17 @@ async function cancelledOrder(orderId) {
 async function findOrderById(orderId) {
   const order = await Order.findById(orderId)
     .populate("user")
-    .populate({path:"orderItems", populate:{path:"product"}})
+    .populate({ path: "orderItems", populate: { path: "product" } })
     .populate("shippingAddress");
-  
+
   return order;
 }
 
 async function usersOrderHistory(userId) {
+  // console.log(userId);
   try {
     const orders = await Order.find({
       user: userId,
-      orderStatus: "PLACED",
     })
       .populate({
         path: "orderItems",
@@ -111,8 +111,7 @@ async function usersOrderHistory(userId) {
         },
       })
       .lean();
-
-
+    console.log(orders);
     return orders;
   } catch (error) {
     throw new Error(error.message);
@@ -120,18 +119,19 @@ async function usersOrderHistory(userId) {
 }
 
 async function getAllOrders() {
-  return await Order.find().populate({
-    path: "orderItems",
-    populate: {
-      path: "product",
-    },
-  })
-  .lean();;
+  return await Order.find()
+    .populate({
+      path: "orderItems",
+      populate: {
+        path: "product",
+      },
+    })
+    .lean();
 }
 
 async function deleteOrder(orderId) {
   const order = await findOrderById(orderId);
-  if(!order)throw new Error("order not found with id ",orderId)
+  if (!order) throw new Error("order not found with id ", orderId);
 
   await Order.findByIdAndDelete(orderId);
 }
