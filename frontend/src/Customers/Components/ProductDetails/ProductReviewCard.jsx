@@ -1,34 +1,57 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-import { Box, Avatar,Rating } from "@mui/material";
+import { Avatar } from "@mui/material";
+import { Rating, Box, Typography, Grid } from "@mui/material";
 
-export default function ProductReviewCard() {
+const ProductReviewCard = ({ item }) => {
+  const [value, setValue] = React.useState(4.5);
+  console.log("hiiiiii", item);
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  };
   return (
-    <div>
-      <Grid container spacing={2}>
+    <div className="pt-3">
+      <Grid container spacing={2} gap={3}>
         <Grid item xs={1}>
           <Box>
             <Avatar
-             
               className="text-white"
-              sx={{ width: 56, height: 56, backgroundColor: "purple" }}
+              sx={{ width: 56, height: 56, bgcolor: "#9155FD" }}
+              alt={item?.user?.firstName}
+              src=""
             >
-              R
+              {/* {item?.user?.firstName[0]?.toUpperCase()} */}
             </Avatar>
           </Box>
         </Grid>
-
         <Grid item xs={9}>
           <div className="space-y-2">
-            <div>
-              <p>Noor</p>
-              <p>Sep 12, 2024.</p>
+            <div className="">
+              <p className="font-semibold text-lg">{item?.user?.firstName}</p>
+              <p className="opacity-70">{formatDate(item?.createdAt)}</p>
             </div>
+            {/* <div>
+              <Rating
+                value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+                name="half-rating"
+                defaultValue={2.5}
+                precision={0.5}
+              />
+            </div> */}
+            <p>{item?.review}</p>
           </div>
-          <Rating value={4.5} name="half-rating" readOnly precision={0.5}/>
-          <p className="font-semibold text-lg opacity-70">Very good quality, i loved it..</p>
         </Grid>
       </Grid>
+      <div className="col-span-1 flex"></div>
     </div>
   );
-}
+};
+
+export default ProductReviewCard;

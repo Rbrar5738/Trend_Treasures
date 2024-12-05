@@ -17,7 +17,9 @@ import img1 from "./2.avif";
 import { useDispatch, useSelector } from "react-redux";
 import { findProductById } from "../../../State/Product/Action.js";
 import { addItemToCart } from "../../../State/Cart/Action.js";
+import { getAllReviews } from "../../../State/Review/Action";
 import CategoryProduct from "./CategoryProduct.jsx";
+import RateProduct from "../ReviewProduct/RateProduct.jsx";
 
 const reviews = { href: "#", average: 4, totalCount: 117 };
 
@@ -30,7 +32,7 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const { productId } = useParams();
   const dispatch = useDispatch();
-  const { customersProduct } = useSelector((store) => store);
+  const { customersProduct, review } = useSelector((store) => store);
 
   const [selectedSize, setSelectedSize] = useState(
     customersProduct.product?.sizes?.[0] || null
@@ -44,7 +46,7 @@ export default function ProductDetails() {
   useEffect(() => {
     const data = { productId: productId };
     dispatch(findProductById(data));
-    // dispatch(getAllReviews(productId));
+    dispatch(getAllReviews(productId));
   }, [productId]);
 
   useEffect(() => {
@@ -149,16 +151,16 @@ export default function ProductDetails() {
               {/* Reviews */}
               <div className="mt-6">
                 <div className="flex items-center space-x-3">
-                  <Rating
+                  {/* <Rating
                     name="read-only"
                     value={3.5}
                     readOnly
                     precision={0.5}
-                  />
-                  <p className="opacity-50 text-sm pt-3">5000 Ratings</p>
+                  /> */}
+                  {/* <p className="opacity-50 text-sm pt-3">5000 Ratings</p>
                   <p className="ml-3 text-sm font-medium pt-3 text-indigo-600 hover:text-indigo-500 cursor-pointer">
-                    300 Reviews
-                  </p>
+                    {reviews.totalCount} Reviews
+                  </p> */}
                 </div>
               </div>
 
@@ -271,19 +273,20 @@ export default function ProductDetails() {
 
         {/*Ratings and review */}
         <section className="px-6">
-          <h1 className="font-semibold text-lg pb-4">
-            Recent Reviews and Ratings
-          </h1>
           <div className="border p-5">
             <Grid container spacing={7}>
-              <Grid item xs={7}>
+              <Grid item xs={8}>
+                <Box>
+                  <RateProduct />
+                  <h1 className="font-semibold text-lg pb-4">Recent Reviews</h1>
+                </Box>
                 <div className="space-y-5">
-                  {[1, 1, 1].map((item) => (
-                    <ProductReviewCard />
+                  {review.reviews?.map((item, i) => (
+                    <ProductReviewCard item={item} />
                   ))}
                 </div>
               </Grid>
-              <Grid item xs={5}>
+              {/* <Grid item xs={5}>
                 <h1 className="text-sl font-semibold pb-1">Product Ratings</h1>
                 <div className="flex items-center space-x-2">
                   <Rating
@@ -389,7 +392,7 @@ export default function ProductDetails() {
                     </Grid>
                   </Grid>
                 </Box>
-              </Grid>
+              </Grid> */}
             </Grid>
           </div>
         </section>
