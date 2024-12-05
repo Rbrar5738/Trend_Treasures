@@ -88,6 +88,9 @@ const getAllUsers = async () => {
     throw new Error(error.message);
   }
 };
+const updateUserProfile = async (userId, updateData) => {
+  return await User.findByIdAndUpdate(userId, updateData);
+};
 
 module.exports = {
   createUser,
@@ -95,4 +98,5 @@ module.exports = {
   getUserProfileByToken,
   getUserByEmail,
   getAllUsers,
+  updateUserProfile,
 };

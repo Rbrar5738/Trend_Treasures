@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { TextField, Button, Box, Typography, Grid } from "@mui/material";
-// import { updateProfile } from "../../../State/Auth/Action";
+import { updateProfile } from "../../../State/User/Action";
 
 const Profile = () => {
   const { auth } = useSelector((store) => store);
@@ -12,12 +12,35 @@ const Profile = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
 
   const [editMode, setEditMode] = useState(false);
 
+  // Listen to changes in the auth state and update local state
+  const [localUserData, setLocalUserData] = useState(auth?.user);
+
+  useEffect(() => {
+    // Update local state when auth.user changes
+    if (auth?.user) {
+      setLocalUserData(auth.user);
+    }
+  }, [auth?.user]); // Ensure the effect runs when auth.user changes
+
   const onSubmit = (data) => {
-    // dispatch(updateProfile(data));
+    // Ensure passwords match if provided
+    if (data.newPassword && data.newPassword !== data.confirmPassword) {
+      alert("New password and confirmation do not match");
+      return;
+    }
+
+    // Dispatch the updateProfile action
+    dispatch(updateProfile(data));
+
+    // Update the local state immediately to reflect the changes
+    setLocalUserData({ ...localUserData, ...data });
+
+    // Exit edit mode
     setEditMode(false);
   };
 
@@ -29,15 +52,11 @@ const Profile = () => {
       {!editMode ? (
         <Box>
           <Typography variant="body1" className="mb-2">
-            Name: {auth.user.firstName} {auth.user.lastName}
+            Name: {localUserData?.firstName} {localUserData?.lastName}
           </Typography>
           <Typography variant="body1" className="mb-2">
-            Email: {auth.user.email}
+            Email: {localUserData?.email}
           </Typography>
-          <Typography variant="body1" className="mb-2">
-            Phone: {auth.user.phone}
-          </Typography>{" "}
-          {/* Add phone to your auth data */}
           <Button
             variant="contained"
             color="primary"
@@ -53,7 +72,7 @@ const Profile = () => {
               <TextField
                 fullWidth
                 label="First Name"
-                defaultValue={auth.user.firstName}
+                defaultValue={localUserData?.firstName}
                 {...register("firstName", { required: true })}
                 error={!!errors.firstName}
                 helperText={errors.firstName && "First name is required"}
@@ -63,7 +82,7 @@ const Profile = () => {
               <TextField
                 fullWidth
                 label="Last Name"
-                defaultValue={auth.user.lastName}
+                defaultValue={localUserData?.lastName}
                 {...register("lastName", { required: true })}
                 error={!!errors.lastName}
                 helperText={errors.lastName && "Last name is required"}
@@ -74,7 +93,7 @@ const Profile = () => {
                 fullWidth
                 label="Email"
                 type="email"
-                defaultValue={auth.user.email}
+                defaultValue={localUserData?.email}
                 {...register("email", { required: true })}
                 error={!!errors.email}
                 helperText={errors.email && "Email is required"}
@@ -83,11 +102,24 @@ const Profile = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Phone"
-                defaultValue={auth.user.phone}
-                {...register("phone", { required: true })}
-                error={!!errors.phone}
-                helperText={errors.phone && "Phone number is required"}
+                label="New Password"
+                type="password"
+                {...register("newPassword")}
+                error={!!errors.newPassword}
+                helperText={errors.newPassword && "New password is required"}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Confirm New Password"
+                type="password"
+                {...register("confirmPassword", {
+                  validate: (value) =>
+                    value === watch("newPassword") || "Passwords do not match",
+                })}
+                error={!!errors.confirmPassword}
+                helperText={errors.confirmPassword && "Passwords must match"}
               />
             </Grid>
           </Grid>

@@ -480,7 +480,7 @@ export default function Navigation() {
                           "aria-labelledby": "basic-button",
                         }}
                       >
-                        <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                        <MenuItem onClick={handleProfile}>My Profile</MenuItem>
 
                         <MenuItem onClick={handleMyOrderClick}>
                           My Orders
