@@ -15,6 +15,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { findProductById } from "../../../State/Product/Action";
 // import CustomerRoutes from "../../../Routers/CustomerRoutes";
 
+// Rate product method
 const RateProduct = () => {
   const [formData, setFormData] = useState({ title: "", description: "" });
   const [rating, setRating] = useState();
