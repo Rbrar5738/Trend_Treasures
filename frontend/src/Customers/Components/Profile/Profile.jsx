@@ -51,7 +51,7 @@ const Profile = () => {
       </Typography>
       {!editMode ? (
         <Box className="m-6 pb-5">
-          <Typography variant="body1" className="mb-5">
+          <Typography variant="body1" className="mb-2">
             Name: {localUserData?.firstName} {localUserData?.lastName}
           </Typography>
           <Typography variant="body1" className="mb-2">
