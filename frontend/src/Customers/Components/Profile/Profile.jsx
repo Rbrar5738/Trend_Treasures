@@ -54,7 +54,7 @@ const Profile = () => {
           <Typography variant="body1" className="mb-2">
             Name: {localUserData?.firstName} {localUserData?.lastName}
           </Typography>
-          <Typography variant="body1" className="mb-5">
+          <Typography variant="body1" className="mb-2">
             Email: {localUserData?.email}
           </Typography>
           <Button
