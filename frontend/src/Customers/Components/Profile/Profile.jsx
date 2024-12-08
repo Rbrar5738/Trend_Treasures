@@ -19,6 +19,7 @@ const Profile = () => {
 
   // Listen to changes in the auth state and update local state
   const [localUserData, setLocalUserData] = useState(auth?.user);
+  // use effect hook
 
   useEffect(() => {
     // Update local state when auth.user changes
