@@ -74,7 +74,7 @@ const RateProduct = () => {
             />
           </div> */}
         {/* </Grid> */}
-        <Grid item xs={12} lg={12} >
+        <Grid item xs={12} lg={12}>
           <div
             className={`${!isLargeScreen ? "py-10" : ""} space-y-5 shadow-lg`}
           >
@@ -83,7 +83,7 @@ const RateProduct = () => {
               className="space-y-5 p-5 shadow-md border rounded-md"
             >
               <TextField
-                label="Title"
+                label="Enter your review here...."
                 variant="outlined"
                 fullWidth
                 margin="normal"
@@ -91,7 +91,7 @@ const RateProduct = () => {
                 onChange={handleChange}
                 name="title"
               />
-              <TextField
+              {/* <TextField
                 label="Description"
                 variant="outlined"
                 fullWidth
@@ -101,7 +101,7 @@ const RateProduct = () => {
                 value={formData.description}
                 onChange={handleChange}
                 name="description"
-              />
+              /> */}
               <Button type="submit" variant="contained" color="primary">
                 Submit Review
               </Button>
