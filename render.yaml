@@ -16,5 +16,9 @@ services:
     autoDeploy: true
     runtime: node
     envVars:
-      DATABASE_URL: # Replace this with your actual database URL or configure via Render's dashboard.
-      API_KEY: # Replace with your API key, if applicable.
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false # Replace this with your actual database URL or configure via Render's dashboard.
+      - key: API_KEY
+        sync: false # Replace with your API key
