@@ -2,7 +2,7 @@ services:
   - name: trend-treasures-frontend
     type: web
     env: static
-    staticPublishPath: /path/to/your/frontend/build
+    staticPublishPath: /frontend/build
     buildCommand: npm install && npm run build
     branch: main
     autoDeploy: true
