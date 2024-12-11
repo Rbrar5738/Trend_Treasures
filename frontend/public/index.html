@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+
+  <!-- SEO Meta Tags for Men & Women's Clothing -->
+  <meta name="description"
+    content="Explore a wide range of stylish and trendy men's and women's clothing. Shop for fashion-forward outfits, from casual wear to formal attire, for every occasion." />
+  <meta name="keywords"
+    content="men's clothing, women's clothing, fashion, stylish outfits, trendy clothes, men's fashion, women's fashion, casual wear, formal wear, dresses, jeans, shirts, jackets" />
+  <meta property="og:title" content="Men's and Women's Fashion - Trendy Clothing Store" />
+  <meta property="og:description"
+    content="Discover the latest trends in men's and women's clothing. Shop for stylish outfits, including dresses, shirts, jackets, jeans, and more!" />
+  <meta property="og:image" content="URL_TO_IMAGE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trend-treasures-frontend.vercel.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Men's and Women's Fashion - Trendy Clothing Store" />
+  <meta name="twitter:description"
+    content="Shop the latest in men's and women's clothing. Browse through trendy styles, comfortable outfits, and fashion-forward choices." />
+  <meta name="twitter:image" content="URL_TO_IMAGE" />
+
+  <!-- Structured Data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Fashion Store",
+      "url": "URL_TO_YOUR_SITE",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "URL_TO_YOUR_SITE/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +55,13 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>Treand Treasures</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +71,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>
