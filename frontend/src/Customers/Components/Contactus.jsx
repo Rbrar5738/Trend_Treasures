@@ -2,6 +2,7 @@ import React from "react";
 
 const Contactus = () => {
   return (
+    // Contact us page
     <div className="bg-white p-6 lg:p-12 min-h-screen flex flex-col lg:flex-row">
       <div className="container mx-auto flex-grow flex flex-col lg:flex-row">
         <div className="w-full lg:w-1/3 mb-8 lg:mb-0 lg:pr-8 flex flex-col">
