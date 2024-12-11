@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const LOCALHOST = "http://localhost:8000";
+const LOCALHOST = "https://vercel.com/rbrar5738s-projects/trend-treasures-api";
 
 export const API_BASE_URL = LOCALHOST;
 
