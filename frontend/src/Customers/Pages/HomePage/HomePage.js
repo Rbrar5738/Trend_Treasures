@@ -12,6 +12,7 @@ function HomePage() {
       <div>
         <MainCarousel />
       </div>
+      <h1>Trend Treasures</h1>
 
       <div className="space-y-10 py-20 mt-5 bg-gray-50">
         <h3 className="italic text-center p-5 bg-gray-200 shadow-md font-bold text-5xl text-blue-900">
