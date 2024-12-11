@@ -14,7 +14,7 @@ function HomePage() {
       </div>
       <div class="flex flex-col items-center text-center">
         <h1 class="text-4xl font-bold mb-4">Trend Treasures</h1>
-        <p class="text-lg max-w-4xl mx-auto">
+        <p class="text-lg w-full px-4">
           Trend Treasures: Discover the Latest Fashion Trends: At Trend
           Treasures, we bring you the most stylish and fashionable pieces to
           elevate your wardrobe. Whether you're looking for casual,
