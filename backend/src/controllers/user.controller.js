@@ -1,5 +1,5 @@
 const userService = require("../services/user.service");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const getUserProfile = async (req, res) => {
   try {
@@ -61,7 +61,7 @@ const updateUserProfile = async (req, res) => {
       firstName,
       lastName,
       email,
-      password: hashedPassword ? user.password :user.password ,
+      password: hashedPassword ? user.password : user.password,
     });
 
     return res.status(200).send(updatedUser);
