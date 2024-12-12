@@ -1,6 +1,6 @@
 const userService = require("../services/user.service.js");
 const jwtProvider = require("../config/jwtProvider.js");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const cartService = require("../services/cart.service.js");
 const Product = require("../models/product.model.js");
 
